@@ -12,3 +12,10 @@
 .accomplishments {
   font-size: .8em;
 }
+
+section>section {
+  background-color: #e9e5dc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0 0 0;
+}
