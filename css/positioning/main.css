@@ -1,14 +1,24 @@
+div {
+  width: 275px;
+  height: 415px;
+  margin: auto;
+  position: relative;
+  }
+
 #octopus {
-  display: block;
-  margin-top: 5%;
-  margin-right: auto;
-  margin-left: auto;
+  position: absolute;
+  top: 90px;
+  left: 18px;
 }
 
 #hat {
-
+  position: absolute;
+  top: 30px;
+  left: 0px;
 }
 
 #glasses {
-
+  position: absolute;
+  top: 189px;
+  left: 60px;
 }
