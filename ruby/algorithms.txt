@@ -1,0 +1,40 @@
+# release zero
+
+* until 3D model of elevator is generated
+    - scan area of elevator with camera
+* until contrast is correlated to model   
+    - assign integer values to contrast values
+* if contrast map shows extreme contrast change in small area
+    - identify as buttons
+* until buttons have been assigned numerical values
+    - map contrast patterns to trace physical coordinates of buttons
+    - map contrast patterns of buttons and compare to text database
+* use 3D model to navigate space and depress button denoting desired floor
+* otherwise: 
+    - speak the name of the floor until humans arrive
+
+# release one
+
+## boiling water with an electric kettle
+
+* place electric kettle under faucet
+    * until lid is open
+        - open lid
+* open the faucet
+* until water level reaches 1.2L
+    - wait
+* close faucet
+* close kettle lid
+* replace kettle on base
+* depress button on electric kettle
+* until water boils
+    - wait
+* if water does not boil
+    - check electrical plug
+* if plug is unplugged
+    - plug in
+    - repeat instructions, starting with "depress button"
+* if plug is plugged in
+    - check circuit breaker
+    - otherwise:
+        + give up
