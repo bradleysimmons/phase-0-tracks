@@ -39,6 +39,7 @@ else
 end
 
 # set booleans for drake cula and tu fang
+
 if name == "tu fang" || name == "drake cula"
   def_vampire = true
 else
@@ -48,28 +49,29 @@ end
 
 #If the employee got their age right, and is willing to eat garlic bread 
 #or sign up for insurance, the result is “Probably not a vampire.”
-if age_truth && (garlic_willing || health_plan_willing) && def_vampire == false
+
+if (def_vampire == false) && age_truth && (garlic_willing || health_plan_willing) 
   result = "probably not a vampire"
 
 
 #If the employee got their age wrong, and hates garlic bread or waives insurance, 
 #the result is “Probably a vampire.”
 
-elsif age_truth = false && ((garlic_willing = false) || (health_plan_willing = false)) && def_vampire = false
+elsif (def_vampire == false) && (age_truth == false) && ((garlic_willing == false) || (health_plan_willing == false))
   result = "probably a vampire"
 
 
 #If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, 
 #the result is “Almost certainly a vampire.”
 
-elsif age_truth = false && garlic_willing = false && health_plan_willing = false && def_vampire = false
+elsif (def_vampire == false) && (age_truth == false) && (garlic_willing == false) && (health_plan_willing == false)
   result = "almost certainly a vampire"
 
 #Even if the employee is an amazing liar otherwise, anyone going by the name of 
 #“Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, 
 #you should print “Definitely a vampire.”
 
-elsif def_vampire == true
+elsif (def_vampire == true)
   result = "definitely a vampire"
 
 #Otherwise, print “Results inconclusive.”
@@ -77,5 +79,7 @@ elsif def_vampire == true
 else
   result = "results inconclusive"
 end
+
+#Print the result at the end of the survey.
 
 puts "vampire test results: #{result}"
