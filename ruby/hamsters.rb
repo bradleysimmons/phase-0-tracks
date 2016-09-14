@@ -22,7 +22,6 @@ age = gets.chomp
   if age == ""
     age = nil
   end
-  
 
 puts "The hamster\'s name is #{name}.  #{name} is estimated to be #{age} years old.  
      On a scale of 1 to 10, with one being quiet and ten being loud, #{name} is a #{volume}.
