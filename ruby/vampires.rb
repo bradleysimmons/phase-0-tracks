@@ -1,3 +1,19 @@
+# At the beginning of your program, ask the user 
+# how many employees will be processed, then begin 
+# the survey process for the first employee. After 
+# you print the result for that employee, start the 
+# survey over again, and repeat until all the employees 
+# have been processed.
+
+puts "how many users will be processed?"
+users = gets.chomp.to_i
+starting_count = 0
+current_count = starting_count
+
+until current_count == users
+
+# write a program that asks the new employee the following questions.
+
 puts "what is your name?"
 name = gets.chomp
 
@@ -47,39 +63,45 @@ else
 end
 
 
-#If the employee got their age right, and is willing to eat garlic bread 
-#or sign up for insurance, the result is “Probably not a vampire.”
+# If the employee got their age right, and is willing to eat garlic bread 
+# or sign up for insurance, the result is “Probably not a vampire.”
 
 if (def_vampire == false) && age_truth && (garlic_willing || health_plan_willing) 
   result = "probably not a vampire"
 
 
-#If the employee got their age wrong, and hates garlic bread or waives insurance, 
-#the result is “Probably a vampire.”
+# If the employee got their age wrong, and hates garlic bread or waives insurance, 
+# the result is “Probably a vampire.”
 
 elsif (def_vampire == false) && (age_truth == false) && ((garlic_willing == false) || (health_plan_willing == false))
   result = "probably a vampire"
 
 
-#If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, 
-#the result is “Almost certainly a vampire.”
+# If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, 
+# the result is “Almost certainly a vampire.”
 
 elsif (def_vampire == false) && (age_truth == false) && (garlic_willing == false) && (health_plan_willing == false)
   result = "almost certainly a vampire"
 
-#Even if the employee is an amazing liar otherwise, anyone going by the name of 
-#“Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, 
-#you should print “Definitely a vampire.”
+# Even if the employee is an amazing liar otherwise, anyone going by the name of 
+# “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, 
+# you should print “Definitely a vampire.”
 
 elsif (def_vampire == true)
   result = "definitely a vampire"
 
-#Otherwise, print “Results inconclusive.”
+# Otherwise, print “Results inconclusive.”
 
 else
   result = "results inconclusive"
 end
 
-#Print the result at the end of the survey.
+# Print the result at the end of the survey.
 
 puts "vampire test results: #{result}"
+
+current_count = current_count + 1
+
+end
+
+puts "multiple employee survey complete"
