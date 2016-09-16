@@ -75,9 +75,28 @@ def decrypt(string)
 
 end
 
-p encrypt("abc")
-p encrypt("zed")
-p decrypt("bcd")
-p decrypt("afe")
-p decrypt(encrypt("swordfish")) #test should return string as is
+#p encrypt("abc")
+#p encrypt("zed")
+#p decrypt("bcd")
+#p decrypt("afe")
+#p decrypt(encrypt("swordfish")) #test should return string as is
 
+#Asks a secret agent (the user) whether they would 
+#like to decrypt or encrypt a password
+
+puts "would you like to encrypt or decrypt a password?"
+method = gets.chomp
+
+#Asks them for the password
+
+puts "please enter the password"
+password = gets.chomp
+
+#Conducts the requested operation, 
+#prints the result to the screen, and exits
+
+if method == "encrypt"
+  p encrypt(password)
+else
+  p decrypt(password)
+end
