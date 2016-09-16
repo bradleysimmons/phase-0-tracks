@@ -17,8 +17,12 @@ def encrypt(string)
       if string[count] == " " # preserve space character
         count += 1
       else
-      string[count] = string[count].next! # select character by index #, advance, and reassign
-      count += 1 # add to count so next character in string is called through method
+        if string[count] == "z" # edge case conditional
+          string[count] = "a"
+        else
+          string[count] = string[count].next! # select character by index #, advance, and reassign
+        end
+        count += 1 # add to count so next character in string is called through method
       end
     end
 
@@ -45,7 +49,7 @@ def decrypt(string)
 
   def retreat(letter)
 
-    alpha = "abcdefghijklmnopqrstuvwxyz"
+    alpha = "abcdefghijklmnopqrstuvwxyz"  #this method takes care of edge cases, but the code breaks if character is not in this string
     value = alpha.index(letter) - 1
     return alpha[value]
     
@@ -71,8 +75,8 @@ def decrypt(string)
 
 end
 
-encrypt("a b c")
+encrypt("abc")
 encrypt("zed")
 decrypt("bcd")
-decrypt("af e")
+decrypt("afe")
 
