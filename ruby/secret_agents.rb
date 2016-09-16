@@ -57,8 +57,12 @@ def decrypt(string)
   count = 0
 
   while count < string.length
-    string[count] = retreat(string[count])
-    count += 1
+    if string[count] == " "
+      count += 1
+    else
+      string[count] = retreat(string[count])
+      count += 1
+    end
   end
 
 # reassemble string with retreated characters
@@ -70,5 +74,5 @@ end
 encrypt("a b c")
 encrypt("zed")
 decrypt("bcd")
-decrypt("afe")
+decrypt("af e")
 
