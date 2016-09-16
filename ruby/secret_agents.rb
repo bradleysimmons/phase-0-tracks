@@ -14,8 +14,12 @@ def encrypt(string)
   count = 0 # initialize count
     
     while count < string.length # run loop while count is less than string length (print every character)
+      if string[count] == " " # preserve space character
+        count += 1
+      else
       string[count] = string[count].next! # select character by index #, advance, and reassign
       count += 1 # add to count so next character in string is called through method
+      end
     end
 
   # reassemble string with advanced characters
@@ -63,7 +67,7 @@ def decrypt(string)
 
 end
 
-encrypt("abc")
+encrypt("a b c")
 encrypt("zed")
 decrypt("bcd")
 decrypt("afe")
