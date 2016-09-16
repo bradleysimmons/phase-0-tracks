@@ -28,7 +28,7 @@ def encrypt(string)
 
   # reassemble string with advanced characters
 
-  puts string
+  return string
 
 end
 
@@ -71,12 +71,13 @@ def decrypt(string)
 
 # reassemble string with retreated characters
 
-  puts string
+  return string
 
 end
 
-encrypt("abc")
-encrypt("zed")
-decrypt("bcd")
-decrypt("afe")
+p encrypt("abc")
+p encrypt("zed")
+p decrypt("bcd")
+p decrypt("afe")
+p decrypt(encrypt("swordfish")) #test should return string as is
 
