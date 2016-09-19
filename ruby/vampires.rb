@@ -140,3 +140,7 @@ until current_count == users
 end
 
 puts "multiple employee survey complete"
+
+puts "actually, never mind."
+puts "what do these questions have to do with anything?"
+puts "let's all be friends."
