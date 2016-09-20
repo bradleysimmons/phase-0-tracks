@@ -59,7 +59,6 @@ if update == true
   client_data[key.to_sym] = "#{new_value}"
 end
 
-
 # print latest version of hash, exit program
 puts                   #for a space
 p client_data
