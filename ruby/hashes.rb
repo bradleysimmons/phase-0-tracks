@@ -1,5 +1,4 @@
 # write a program that will allow an interior designer to enter the details of a given client: the client's age, number of children, decor theme, and so on (you can choose your own: mix string, integer, and boolean data).
-
 # program should prompt the user
 puts "please enter client details:"
 # convert any user input to appropriate data type
