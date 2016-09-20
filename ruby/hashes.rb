@@ -63,7 +63,3 @@ end
 # print latest version of hash, exit program
 puts                   #for a space
 p client_data
-
-
-
-
