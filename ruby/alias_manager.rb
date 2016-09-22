@@ -1,11 +1,11 @@
 #pseudocode and write a method that takes a spy's real name (e.g., "Felicia Torres") and creates a fake name with it by doing the following:
 
-puts "input name"
-name = gets.chomp
+
 
 #Swapping the first and last name.
 
 def swap(name)
+name = name.downcase
 name = name.split(" ")
 name = name.reverse
 name = name.join(" ")
@@ -15,10 +15,6 @@ def makearray(name)
   name = swap(name)
   name = name.split("")
 end
-
-name = makearray(name)
-
-
 
 #Changing all of the vowels (a, e, i, o, or u) to the next vowel in 'aeiou', and all of the consonants (everything else besides the vowels) to the next consonant in the alphabet. So 'a' would become 'e', 'u' would become 'a', and 'd' would become 'f'.
 
@@ -31,7 +27,7 @@ def successive_letter(name)
   vowels = "aeiou"
   consonants = "bcdfghjklmnpqrstvwxyz"
 
-  name.map! do |letter|
+  makearray(name).map! do |letter|
     if letter == " "
       letter = " "
     elsif letter == "a" || letter == "e" || letter == "i" || letter == "o" || letter == "u"
@@ -44,15 +40,42 @@ def successive_letter(name)
   end
 end
 
-
-
-
-name = successive_letter(name)
-
 def join_name(name)
-  name.join("")
+  name = successive_letter(name).join("")
+  name = name.split(" ")
+  name.map! do |name|
+    name.capitalize
+  end
+  name = name.join(" ")
 end
 
-p join_name(name)
+#################################driver code and input validator currently broken
+
+
+def input_validator(name)
+valid_input_string = " abcdefghijklmnopqrstuvwxyz"
+character_array = name.split("")
+  
+  character_array.each do |character|
+    index_number = valid_input_string.index(character)
+  end
+end
+
+
+
+
+valid_input = false
+until valid_input == true
+  puts "input name"
+  name = gets.chomp
+  if input_validator(name) <= 26
+    p join_name(name)
+    valid_input = true
+  else
+    valid_input = false
+  end
+end
+
+
 
 
