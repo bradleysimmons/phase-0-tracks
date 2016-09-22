@@ -52,29 +52,31 @@ end
 #################################driver code and input validator currently broken
 
 
-def input_validator(name)
-valid_input_string = " abcdefghijklmnopqrstuvwxyz"
-character_array = name.split("")
+# def input_validator(name)
+# valid_input_string = " abcdefghijklmnopqrstuvwxyz"
+# character_array = name.split("")
   
-  character_array.each do |character|
-    index_number = valid_input_string.index(character)
-  end
-end
+#   character_array.each do |character|
+#     index_number = valid_input_string.index(character)
+#   end
+# end
 
 
 
 
-valid_input = false
-until valid_input == true
-  puts "input name"
-  name = gets.chomp
-  if input_validator(name) <= 26
-    p join_name(name)
-    valid_input = true
-  else
-    valid_input = false
-  end
-end
+# valid_input = false
+# until valid_input == true
+#   puts "input name"
+#   name = gets.chomp
+#   if input_validator(name) <= 26
+#     p join_name(name)
+#     valid_input = true
+#   else
+#     valid_input = false
+#   end
+# end
+
+
 
 
 
