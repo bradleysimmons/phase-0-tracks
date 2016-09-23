@@ -50,11 +50,7 @@ end
 
 def fake_name(name)
   name = successive_letter(name).join("")
-  name = name.split(" ")
-  name.map! do |name|
-    name.capitalize
-  end
-  return name.join(" ")
+  name = capitalize(name)
 end
 
 ####################
@@ -76,14 +72,14 @@ name = name.split("")
   end
 end
 
-#method to capitalize input_name for printing
+#method to capitalize names for printing
 
 def capitalize(name)
   name = name.split(" ")
   name.map! do |name|
     name.capitalize
   end
-  name = name.join(" ")
+  return name.join(" ")
 end
 
 #take input
