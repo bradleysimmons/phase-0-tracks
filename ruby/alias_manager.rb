@@ -113,4 +113,3 @@ puts "double agents:"
 names.each do |input_name, fake_name|
   puts "'#{fake_name}' a.k.a #{input_name}"
 end
-
