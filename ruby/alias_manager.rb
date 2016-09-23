@@ -5,11 +5,13 @@
 #Swapping the first and last name.
 
 def swap(name)
-name = name.downcase
-name = name.split(" ")
-name = name.reverse
-name = name.join(" ")
+  name = name.downcase
+  name = name.split(" ")
+  name = name.reverse
+  name = name.join(" ")
 end
+
+# make into array for use in iterative method
 
 def makearray(name)
   name = swap(name)
@@ -19,9 +21,10 @@ end
 #Changing all of the vowels (a, e, i, o, or u) to the next vowel in 'aeiou', and all of the consonants (everything else besides the vowels) to the next consonant in the alphabet. So 'a' would become 'e', 'u' would become 'a', and 'd' would become 'f'.
 
 #iterate
-#check if aeiou
-#recombine
-#print
+#handle edge cases/ spaces
+#check if aeiou, return successive
+#check if consonant, return successive
+
 
 def successive_letter(name)
   vowels = "aeiou"
@@ -30,9 +33,13 @@ def successive_letter(name)
   makearray(name).map! do |letter|
     if letter == " "
       letter = " "
-    elsif letter == "a" || letter == "e" || letter == "i" || letter == "o" || letter == "u"
+    elsif letter == "u"
+      letter = "a"
+    elsif letter == "z"
+      letter = "b"
+    elsif consonants.index(letter) == nil
       index_num = vowels.index(letter) + 1
-      letter = vowels[index_num] 
+      letter = vowels[index_num]
     else
       index_num = consonants.index(letter) + 1
       letter = consonants[index_num]
@@ -49,35 +56,37 @@ def join_name(name)
   name = name.join(" ")
 end
 
-#################################driver code and input validator currently broken
+#################################
+
+#Provide a user interface that lets a user enter a name and get a fake name back. Let the user do this repeatedly until they decide to quit by typing 'quit'. (They might just hit Enter to continue.)
 
 
-# def input_validator(name)
-# valid_input_string = " abcdefghijklmnopqrstuvwxyz"
-# character_array = name.split("")
-  
-#   character_array.each do |character|
-#     index_number = valid_input_string.index(character)
-#   end
-# end
+#### method to check for valid input
 
+def validator(name)
+valid_string = " abcdefghijklmnopqrstuvwxyz"
+name = name.downcase
+name = name.split("")
 
+  name.each do |letter|
+    if valid_string.index(letter) == nil
+      return false
+    end
+  end
+end
 
+###driver code
 
-# valid_input = false
-# until valid_input == true
-#   puts "input name"
-#   name = gets.chomp
-#   if input_validator(name) <= 26
-#     p join_name(name)
-#     valid_input = true
-#   else
-#     valid_input = false
-#   end
-# end
-
-
-
-
-
+name = " "
+until name == "quit"
+puts "enter name (or 'quit' to end)"
+name = gets.chomp
+  if name == "quit"
+    break
+  elsif validator(name) == false
+    puts "input ivalid: letters and spaces only"
+  else 
+    p join_name(name)
+  end
+end
 
