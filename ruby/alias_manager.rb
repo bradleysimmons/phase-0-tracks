@@ -12,7 +12,7 @@ end
 
 #make swapped name into character array for use in iterative method
 
-def makearray(name)
+def make_array(name)
   name = swap(name)
   name = name.split("")
 end
@@ -29,19 +29,19 @@ def successive_letter(name)
   vowels = "aeiou"
   consonants = "bcdfghjklmnpqrstvwxyz"
 
-  makearray(name).map! do |letter|
-    if letter == " "
-      letter = " "
-    elsif letter == "u"
-      letter = "a"
-    elsif letter == "z"
-      letter = "b"
-    elsif consonants.index(letter) == nil
-      index_num = vowels.index(letter) + 1
-      letter = vowels[index_num]
+  make_array(name).map! do |character|
+    if character == " "
+      character = " "
+    elsif character == "u"
+      character = "a"
+    elsif character == "z"
+      character = "b"
+    elsif consonants.index(character) == nil
+      index_number = vowels.index(character) + 1
+      character = vowels[index_number]
     else
-      index_num = consonants.index(letter) + 1
-      letter = consonants[index_num]
+      index_number = consonants.index(character) + 1
+      character = consonants[index_number]
     end
   end
 end
@@ -57,20 +57,20 @@ def fake_name(name)
   return name.join(" ")
 end
 
-#################################
+####################
 
 #create user interface where input = name and output = fake name
 #allow multiple inputs until they type 'quit'
 
 #method to check for valid input
 
-def validator(name)
+def validate(name)
 valid_string = " abcdefghijklmnopqrstuvwxyz"
 name = name.downcase
 name = name.split("")
 
-  name.each do |letter|
-    if valid_string.index(letter) == nil
+  name.each do |character|
+    if valid_string.index(character) == nil
       return false
     end
   end
@@ -90,14 +90,13 @@ end
 #check for valid input
 #use data structure to store names
 
-name = " "
 names = []
-until name == "quit"
+until
 puts "enter name (or 'quit' to end)"
 name = gets.chomp
   if name == "quit"
     break
-  elsif name == "" || validator(name) == false
+  elsif name == "" || validate(name) == false
     puts "invalid input: letters and spaces only"
   else 
     name = capitalize(name)
