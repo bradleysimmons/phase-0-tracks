@@ -1,8 +1,7 @@
-#pseudocode and write a method that takes a spy's real name (e.g., "Felicia Torres") and creates a fake name with it by doing the following:
+#pseudocode and write a method that takes a spy's real name 
+#(e.g., "Felicia Torres") and creates a fake name.
 
-
-
-#Swapping the first and last name.
+#swap the first and last name.
 
 def swap(name)
   name = name.downcase
@@ -11,20 +10,20 @@ def swap(name)
   name = name.join(" ")
 end
 
-# make into array for use in iterative method
+#make swapped name into character array for use in iterative method
 
 def makearray(name)
   name = swap(name)
   name = name.split("")
 end
 
-#Changing all of the vowels (a, e, i, o, or u) to the next vowel in 'aeiou', and all of the consonants (everything else besides the vowels) to the next consonant in the alphabet. So 'a' would become 'e', 'u' would become 'a', and 'd' would become 'f'.
+#change vowels to the next vowel in alphabet, 
+#change consonants to the next consonant in alphabet
 
 #iterate
 #handle edge cases/ spaces
-#check if aeiou, return successive
+#check if vowel, return successive
 #check if consonant, return successive
-
 
 def successive_letter(name)
   vowels = "aeiou"
@@ -47,21 +46,23 @@ def successive_letter(name)
   end
 end
 
-def join_name(name)
+#join and format fake_name for printing
+
+def fake_name(name)
   name = successive_letter(name).join("")
   name = name.split(" ")
   name.map! do |name|
     name.capitalize
   end
-  name = name.join(" ")
+  return name.join(" ")
 end
 
 #################################
 
-#Provide a user interface that lets a user enter a name and get a fake name back. Let the user do this repeatedly until they decide to quit by typing 'quit'. (They might just hit Enter to continue.)
+#create user interface where input = name and output = fake name
+#allow multiple inputs until they type 'quit'
 
-
-#### method to check for valid input
+#method to check for valid input
 
 def validator(name)
 valid_string = " abcdefghijklmnopqrstuvwxyz"
@@ -75,18 +76,42 @@ name = name.split("")
   end
 end
 
-###driver code
+#method to capitalize input_name for printing
+
+def capitalize(name)
+  name = name.split(" ")
+  name.map! do |name|
+    name.capitalize
+  end
+  name = name.join(" ")
+end
+
+#take input
+#check for valid input
+#use data structure to store names
 
 name = " "
+names = []
 until name == "quit"
 puts "enter name (or 'quit' to end)"
 name = gets.chomp
   if name == "quit"
     break
-  elsif validator(name) == false
-    puts "input ivalid: letters and spaces only"
+  elsif name == "" || validator(name) == false
+    puts "invalid input: letters and spaces only"
   else 
-    p join_name(name)
+    name = capitalize(name)
+    names.push([name, fake_name(name)])
   end
+end
+
+#when user exits program, iterate through data structure 
+#and print all of the data the user entered
+
+puts "\n"
+puts "double agents:"
+
+names.each do |input_name, fake_name|
+  puts "'#{fake_name}' a.k.a #{input_name}"
 end
 
