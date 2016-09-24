@@ -32,10 +32,10 @@ def successive_letter(name)
   make_array(name).map! do |character|
     if character == " "
       character = " "
-    elsif character == "u"
-      character = "a"
-    elsif character == "z"
-      character = "b"
+    elsif character == vowels[-1]
+      character = vowels[0]
+    elsif character == consonants[-1]
+      character = consonants[0]
     elsif consonants.index(character) == nil
       index_number = vowels.index(character) + 1
       character = vowels[index_number]
