@@ -9,83 +9,83 @@
 ########################## RELEASE 1 #########################
 ########################## METHODS #########################
 
-def search_array(array, integer)
-  counter = 0                      # Our own INDEX!
-  array.each do |value|            # We iterate through array, checking each "value"
-    if value == integer; return counter; end     # return the index of the "integer" we searched for
-    counter += 1
-    if counter >= array.length ; return nil ;end # return nil if "integer" is not present in the array
-  end
-end
+# def search_array(array, integer)
+#   counter = 0                      # Our own INDEX!
+#   array.each do |value|            # We iterate through array, checking each "value"
+#     if value == integer; return counter; end     # return the index of the "integer" we searched for
+#     counter += 1
+#     if counter >= array.length ; return nil ;end # return nil if "integer" is not present in the array
+#   end
+# end
 
-########################## DRIVER CODE release 1 #########################
-array = [1,2,3,4,5]
-puts search_array(array, 6)
+# ########################## DRIVER CODE release 1 #########################
+# array = [1,2,3,4,5]
+# puts search_array(array, 6)
 
-######### DEBUGGING EXAMPLE ##################
-arr = [42, 89, 23, 1]
-p "SEARCH ARRAY- should print 3: #{search_array(arr, 1)}"
-#=> 3
-p "SEARCH ARRAY- should print nil: #{search_array(arr, 24)}"
-# => nil
-
-
-######################### RELEASE 2 #########################
-
-def fibonacci(amount)
-  fib_array = [0, 1]
-  current_value = 0
-  if (amount == 0) ; return 0; end # Edge case...
-  if (amount == 1) ; return 1; end # Edge case...
-
-  index = 2 # Start indexing after the edge cases.
-  until index == amount
-    current_value = fib_array[index - 1] + fib_array[index - 2]   # Equation for Fib-sequence. push it onto array afterwards.
-      #puts current_value # DEBUG
-    fib_array.push(current_value)
-    index += 1 # counter approaching amount
-  end 
-  return fib_array[-1] # return the last value we did!
-end
-
-########################## DRIVER release-2 #########################
-
-puts "Here is your Fibonacci at 100: #{fibonacci(100)} Should be 218922995834555169026"
+# ######### DEBUGGING EXAMPLE ##################
+# arr = [42, 89, 23, 1]
+# p "SEARCH ARRAY- should print 3: #{search_array(arr, 1)}"
+# #=> 3
+# p "SEARCH ARRAY- should print nil: #{search_array(arr, 24)}"
+# # => nil
 
 
-########################## RELEASE 3 #########################
+# ######################### RELEASE 2 #########################
 
-# Bubble Sort Notes: It's a loop within a loop, with the inner loop testing a value against the next value, and swapping them accordingly, then moving to the next pair. The outer loop makes the inner loop run again, until there are no swaps to be made. So in an un-ideal situation, you would unnecessarily run through the loop an excessive amount of times. ("Bubbles to the top.")
+# def fibonacci(amount)
+#   fib_array = [0, 1]
+#   current_value = 0
+#   if (amount == 0) ; return 0; end # Edge case...
+#   if (amount == 1) ; return 1; end # Edge case...
 
-# MergeSort: Splits the array into smaller arrays, sorting them, then merging them together.
+#   index = 2 # Start indexing after the edge cases.
+#   until index == amount
+#     current_value = fib_array[index - 1] + fib_array[index - 2]   # Equation for Fib-sequence. push it onto array afterwards.
+#       #puts current_value # DEBUG
+#     fib_array.push(current_value)
+#     index += 1 # counter approaching amount
+#   end 
+#   return fib_array[-1] # return the last value we did!
+# end
+
+# ########################## DRIVER release-2 #########################
+
+# puts "Here is your Fibonacci at 100: #{fibonacci(100)} Should be 218922995834555169026"
 
 
-# Pseudocode a sorting method that takes an array of integers and uses a sorting algorithm. The method should return a sorted version of the array. Your pseudocode should not be Ruby-specific.
+# ########################## RELEASE 3 #########################
 
-# Insertion Sort: 
+# # Bubble Sort Notes: It's a loop within a loop, with the inner loop testing a value against the next value, and swapping them accordingly, then moving to the next pair. The outer loop makes the inner loop run again, until there are no swaps to be made. So in an un-ideal situation, you would unnecessarily run through the loop an excessive amount of times. ("Bubbles to the top.")
 
-def insertion_sort(array)
-    final = [array[0]]        # Final grabs the first value in array.
-    array.delete_at(0)        # Then it deletes that value, to compare others
-    # main code
-    for i in array            # for every integer in array:
-        final_index = 0
-        while final_index < final.length     # Both index and length will increase, till length stops increasing, stopping loop.
-            if i <= final[final_index]       #IF the integer is less than the final_index integer:
-                final.insert(final_index,i)  #   Insert the integer into the current index.
-                break
-            elsif final_index == final.length-1 #IF the index reaches the end of final's array, that means the integer is greater than all:
-                final.insert(final_index+1,i)   #  Insert the value to the end of array cause it's the greatest value #COULD USE .PUSH HERE
-               break 
-            end
-            final_index+=1                  # We will go to the next index of final, if no conditions are matched
-        end # END WHILE LOOP
-    end     # END FOR LOOP
-    # output
-    final #returns final array
-end
-array = [1, 5, 3, 4, 6, 3] # Expected output (6 length): [1, 3, 3, 4, 5, 6]
-puts "Insertion Array: #{insertion_sort(array)}" #DEBUG
+# # MergeSort: Splits the array into smaller arrays, sorting them, then merging them together.
+
+
+# # Pseudocode a sorting method that takes an array of integers and uses a sorting algorithm. The method should return a sorted version of the array. Your pseudocode should not be Ruby-specific.
+
+# # Insertion Sort: 
+
+# def insertion_sort(array)
+#     final = [array[0]]        # Final grabs the first value in array.
+#     array.delete_at(0)        # Then it deletes that value, to compare others
+#     # main code
+#     for i in array            # for every integer in array:
+#         final_index = 0
+#         while final_index < final.length     # Both index and length will increase, till length stops increasing, stopping loop.
+#             if i <= final[final_index]       #IF the integer is less than the final_index integer:
+#                 final.insert(final_index,i)  #   Insert the integer into the current index.
+#                 break
+#             elsif final_index == final.length-1 #IF the index reaches the end of final's array, that means the integer is greater than all:
+#                 final.insert(final_index+1,i)   #  Insert the value to the end of array cause it's the greatest value #COULD USE .PUSH HERE
+#                break 
+#             end
+#             final_index+=1                  # We will go to the next index of final, if no conditions are matched
+#         end # END WHILE LOOP
+#     end     # END FOR LOOP
+#     # output
+#     final #returns final array
+# end
+# array = [1, 5, 3, 4, 6, 3] # Expected output (6 length): [1, 3, 3, 4, 5, 6]
+# puts "Insertion Array: #{insertion_sort(array)}" #DEBUG
 
 # LINE BY LINE CODE: ^ = insertions
 # 1 =>  final[1]
@@ -136,3 +136,70 @@ puts "Insertion Array: #{insertion_sort(array)}" #DEBUG
 # p "MergeSort Result: #{mergesort([1,2,3,231,23,51,5,6,16,16,16,1617,7484])} "
 
 #######################################################################################################################
+
+# write a method that takes an array of integers and an integer to search for. The method should return the index of the item, or nil if the integer is not present in the array. Don't use built-in array methods like .index. You are allowed to use .length and .each.
+
+# array = [1, 2, 3, 10, 5, 6, 7, 8, 9, 10]
+# array_two = [1,2,5,4,3,7,10,10]
+
+# def search(array_name, integer)
+#   index_number = 0
+#   search_results = []
+#   array_name.each do |value|
+#       if value == integer
+#         search_results.push(index_number)
+#       end
+#       index_number +=1
+#   end
+#   if search_results.empty?
+#     puts "integer not present"
+#   else
+#     p search_results
+#   end
+# end
+
+
+# search(array, 10)
+# search(array_two, 10)
+
+########################
+
+array = [1, 2, 3, 10, 5, 6, 7, 8, 10, 10]
+
+
+def search(array_name, integer)
+  
+  index_number = 0
+  array_name.each do |value|
+      if value == integer
+        return index_number
+      end
+      if array_name.length - 1 == index_number
+        return nil
+      end
+      index_number += 1
+      
+  end
+end
+
+
+
+
+p search(array, 10)
+
+
+
+##Add a method to your file that takes a number of Fibonacci terms to generate and returns an array of the terms. For example, fib(6) would return [0,1,1,2,3,5]. Your method should work for a large number of terms. To verify your work: the last number in the array generated by fib(100) will be 218922995834555169026. (How can you verify this without having to compare this huge number manually? Be smart with your driver code!)
+
+# def fibonacci(number)
+#   array = [0, 1]
+#   index = 2
+#   until index == number
+#     last_number = array[index - 1] + array[index - 2]
+#     array.push(last_number)
+#     index += 1
+#   end
+#     return array[-1]
+# end
+
+# p fibonacci(100)
