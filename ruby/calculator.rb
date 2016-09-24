@@ -26,7 +26,16 @@ end
 
 #Update your program to allow the user to do as many calculations as they want (so the user might enter 3 + 4, receive the answer, and then enter 7 - 1 as the next calculation, and so on). When the user types "done" instead of a calculation, the program can exit.
 
+#When the user has finished performing calculations, but just before the program exits, print a count of the calculations performed, and a history of all the calculations that have been performed.
 
+# push into 3 value array = operations array
+# push into results array = archive array
+# use .length of results array for number of calculations
+
+calculations = {
+
+}
+count = 1
 until
   puts "basic calculator: type 'done' to exit"
   puts "enter a number:"
@@ -51,7 +60,13 @@ until
     puts "\n"
     puts "result: #{calculate(integer, operator, integer_2)}"
     puts "\n"
+    calculations["#{count}".to_sym] = "#{integer} #{operator} #{integer_2} = #{calculate(integer, operator, integer_2)}"
+    p calculations
+    count += 1
 end
-
-
+puts "\n"
+puts "#{count - 1} calculations have been performed:"
+calculations.each do |key, value|
+  puts "calculation #{key}: #{value}"
+end
 
