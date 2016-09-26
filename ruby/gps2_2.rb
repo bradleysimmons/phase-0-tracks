@@ -67,7 +67,16 @@ def update_quantity(hash, item, quantity)
 end
 
 p update_quantity(grocery_list, "Michael", 2)
+
 # Method to print a list and make it look pretty
-# input:
+# input: hash
 # steps: Iterate through hash and print each individual key/value pairs 
-# output:
+# output: pretty list
+
+def print_list(hash)
+    hash.each do |item, quantity|
+    puts "#{item}: #{quantity}"
+    end
+end
+
+print_list(grocery_list)
