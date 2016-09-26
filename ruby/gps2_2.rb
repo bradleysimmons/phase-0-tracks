@@ -57,10 +57,16 @@ end
 p remove_item(grocery_list, "Helin")
 
 # Method to update the quantity of an item
-# input:
-# steps:
-# output:
+# input: hash, item name, quantity
+# steps: use new quantity to update value of item name
+# output: updated hash
 
+def update_quantity(hash, item, quantity)
+    hash[item] = quantity
+    return hash
+end
+
+p update_quantity(grocery_list, "Michael", 2)
 # Method to print a list and make it look pretty
 # input:
 # steps: Iterate through hash and print each individual key/value pairs 
