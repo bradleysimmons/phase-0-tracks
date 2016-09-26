@@ -23,10 +23,6 @@ def list_creator(items)
     items_hash
 end 
 
-grocery_list = list_creator("Michael Bradley")
-
-p grocery_list
-
 # Method to add an item to a list
 # input: hash, item name , optional quantity
 # steps: 
@@ -41,9 +37,6 @@ def add_item(hash, item, quantity)
     return hash
 end 
 
-p add_item(grocery_list, "Helin", 5)
-
-
 # Method to remove an item from the list
 # input: hash, item name
 # steps: use item name to delete from hash
@@ -53,8 +46,6 @@ def remove_item(hash, item)
     hash.delete(item)
     return hash
 end
-
-p remove_item(grocery_list, "Helin")
 
 # Method to update the quantity of an item
 # input: hash, item name, quantity
@@ -66,7 +57,6 @@ def update_quantity(hash, item, quantity)
     return hash
 end
 
-p update_quantity(grocery_list, "Michael", 2)
 
 # Method to print a list and make it look pretty
 # input: hash
@@ -78,5 +68,18 @@ def print_list(hash)
     puts "#{item}: #{quantity}"
     end
 end
+
+# Driver Code 
+
+grocery_list = list_creator("Apples")
+
+add_item(grocery_list, "Lemonade", 2)
+add_item(grocery_list, "Tomatos", 3)
+add_item(grocery_list, "Onions", 1)
+add_item(grocery_list, "Ice_Cream", 4)
+
+remove_item(grocery_list, "Lemonade")
+
+update_quantity(grocery_list, "Ice_Cream", 1)
 
 print_list(grocery_list)
