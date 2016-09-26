@@ -77,11 +77,11 @@ def bubble_sort(array)
   count = 0
   loop do
     swapped = false   # initializes swapped variable as false
-    p "count = #{count}"
-    p "array = #{array}"
+    # p "count = #{count}"  # for visualization
+    # p "array = #{array}"
     (n-1).times do |i|  # for array length - 1 iterate through 
-      p "count = #{count}"
-      p "array = #{array}"
+      # p "count = #{count}"   # for visualization
+      # p "array = #{array}"
       # p "if #{array[i]} > #{array[i+1]}"
       if array[i] > array[i+1]    # if preceding number is larger
         array[i], array[i+1] = array[i+1], array[i] # swap them and run through again
