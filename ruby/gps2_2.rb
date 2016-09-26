@@ -49,7 +49,12 @@ p add_item(grocery_list, "Helin", 5)
 # steps: use item name to delete from hash
 # output: updated hash
 
+def remove_item(hash, item)
+    hash.delete(item)
+    return hash
+end
 
+p remove_item(grocery_list, "Helin")
 
 # Method to update the quantity of an item
 # input:
