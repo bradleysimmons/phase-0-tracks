@@ -32,7 +32,7 @@ attr_accessor :gender
     @ethnicity = ethnicity
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", 
     "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-    @age = 0
+    @age = rand(140)
   end
 
 #A speak method that will print "Ho, ho, ho! Haaaappy holidays!" 
@@ -135,5 +135,39 @@ santas.each do |santa|
   p santa.ethnicity
 end
 
+#Write a program that creates lots of Santas. If you're on a 
+#cloud-based environment, you may not want to push it past 
+#about a hundred Santas. If you're on a faster computer, 
+#you may be able to make lots more than that. Play around 
+#with the numbers and see what happens.
+
+#Obviously, no one wants to create ten thousand Santas by hand. 
+#That's what computers are for!
+
+#Use our array of example genders and an array of example 
+#ethnicities (and feel free to add to it if you like -- 
+#each array could have a lot more options in it!)
+
+example_genders = ["agender", "female", "bigender", "male", "female", 
+  "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", 
+  "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+
+100.times do
+
+#to create your Santas with a randomly selected gender 
+#and a randomly selected ethnicity. (How do you randomly 
+#select an array item? The Array documentation should be 
+#able to help you out there!)
+
+santa = Santa.new(example_genders.sample, example_ethnicities.sample)
+
+#Set your new Santa's age to a random number between 0 and 140.
+#No need to store your Santas in a data structure, but your 
+#program should print out the attributes of each Santa using 
+#the instance methods that give you access to that data.
+
+p "age: #{santa.age}, gender: #{santa.gender}, ethnicity: #{santa.ethnicity}"
 
 
+end
