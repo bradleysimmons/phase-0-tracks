@@ -42,9 +42,50 @@ class Santa
     puts "that was a good #{cookie_type}!"
   end
 
-   def introduce
-      puts "hi, i am a(n) #{@ethnicity} #{@gender} santa"
-    end
+  def introduce
+    puts "hi, i am a(n) #{@ethnicity} #{@gender} santa"
+  end
+
+#Add three attribute-changing methods to your Santa class:
+
+#celebrate_birthday should age Santa by one year.
+  
+  def celebrate_birthday
+    @age = @age + 1
+  end
+
+#get_mad_at can take a reindeer's name as an argument, 
+#and move that reindeer in last place in the reindeer rankings. 
+#Vixen knows what he did.
+
+  def get_mad_at(name)
+    index_num = @reindeer_ranking.index(name)
+    @reindeer_ranking.delete_at(index_num)
+    @reindeer_ranking << name
+  end
+
+#The @gender attribute should have a setter method that allows 
+#@gender to be reassigned from outside the class definition.
+
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
+
+#Add two "getter" methods as well:
+
+#The method age should simply return @age.
+
+  def age
+    @age
+  end
+
+#The method ethnicity should return @ethnicity.
+#Update your driver code to test your work.
+
+  def ethnicity
+    @ethnicity
+  end
 
 end
 
@@ -69,6 +110,12 @@ santas << Santa.new("girl", "asian")
 
 
 santas.each do |santa|
-  santa.introduce
+  p santa.celebrate_birthday
+  p santa.get_mad_at("Vixen")
+  p santa.gender = "transgender"
+  p santa.age
+  p santa.ethnicity
 end
+
+
 
