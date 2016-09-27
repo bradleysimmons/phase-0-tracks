@@ -32,7 +32,7 @@ end
 
 class Car
 
-  def initialize
+  def initialize()
     puts "start your engines"
   end
 
@@ -71,16 +71,27 @@ sheila.road_trip(10)
 # should travel 10 miles
 =end
 
-car_structure = {}
+#can't figure out how to call methods on instances outside of this loop
+
+# 10.times do |i|
+#   car_name = "car_#{i + 1}"
+#   puts car_name
+#   car_name = Car.new
+#   puts car_name
+# end
+
+
+
+cars_hash = {}
 50.times do |i|
-  car_structure["car #{i}".to_sym] = (Car.new)
-  puts i
+  car_name = "car #{i + 1}"
+  cars_hash[car_name] = Car.new
 end
 
-p car_structure
-car_structure.each do |car_name, car_instance|
-  p car_name
-  car_instance.drive
-  car_instance.road_trip(1)
+cars_hash.each do |car_name, id|
+  puts "#{car_name}: #{id}"
+  id.drive
+  id.road_trip(1)
 end
+
 
