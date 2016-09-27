@@ -82,16 +82,15 @@ sheila.road_trip(10)
 
 
 
-cars_hash = {}
-50.times do |i|
-  car_name = "car #{i + 1}"
-  cars_hash[car_name] = Car.new
-end
+# cars_hash = {}
+# 50.times do |i|
+#   car_name = "car #{i + 1}"
+#   cars_hash[car_name] = Car.new
+# end
 
-cars_hash.each do |car_name, id|
-  puts "#{car_name}: #{id}"
-  id.drive
-  id.road_trip(1)
-end
-
+# cars_hash.each do |car_name, id|
+#   puts "#{car_name}: #{id}"
+#   id.drive
+#   id.road_trip(1)
+# end
 
