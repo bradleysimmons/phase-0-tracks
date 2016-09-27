@@ -4,6 +4,13 @@
 
 class Santa
 
+#Refactor your code with attr_reader and attr_accessor. 
+#Verify that your driver code still works.
+
+attr_reader :age, :ethnicity
+attr_accessor :gender
+
+
 #An initialize method that prints "Initializing Santa instance ...".
 
 #Update your Santa class with the following attributes:
@@ -64,6 +71,7 @@ class Santa
     @reindeer_ranking << name
   end
 
+=begin
 #The @gender attribute should have a setter method that allows 
 #@gender to be reassigned from outside the class definition.
 
@@ -71,7 +79,12 @@ class Santa
     @gender = new_gender
   end
 
+#Refactor your code with attr_reader and attr_accessor. 
+#Verify that your driver code still works.
+=end
 
+
+=begin
 #Add two "getter" methods as well:
 
 #The method age should simply return @age.
@@ -86,6 +99,11 @@ class Santa
   def ethnicity
     @ethnicity
   end
+
+#Refactor your code with attr_reader and attr_accessor. 
+#Verify that your driver code still works.
+=end
+
 
 end
 
