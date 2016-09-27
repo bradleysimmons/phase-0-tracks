@@ -6,8 +6,26 @@ class Santa
 
 #An initialize method that prints "Initializing Santa instance ...".
 
-  def initialize
+#Update your Santa class with the following attributes:
+
+#gender, which will be a string passed in on initialization
+
+#ethnicity, which will be a string passed in on initialization
+
+#reindeer_ranking, an array of reindeer from most preferred to 
+#least preferred. This is not passed in on initialization; 
+#it simply gets a default value of ["Rudolph", "Dasher", 
+#"Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+
+#age, which is not passed in on initialization and defaults to 0
+
+  def initialize (gender, ethnicity)
     puts "initializing santa instance"
+    @gender = gender
+    @ethnicity = ethnicity
+    @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", 
+    "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+    @age = 0
   end
 
 #A speak method that will print "Ho, ho, ho! Haaaappy holidays!" 
@@ -24,12 +42,33 @@ class Santa
     puts "that was a good #{cookie_type}!"
   end
 
+   def introduce
+      puts "hi, i am a(n) #{@ethnicity} #{@gender} santa"
+    end
+
 end
 
 #Add a bit of code below your class declaration to check that 
 #you're able to initialize a Santa instance and call its methods.
 
-saint_nick = Santa.new
+# saint_nick = Santa.new
 
-saint_nick.speak
-saint_nick.eat_milk_and_cookies("chocolate chip cookie")
+# saint_nick.speak
+# saint_nick.eat_milk_and_cookies("chocolate chip cookie")
+
+#Add some diverse initializations to your file as driver code, 
+#then test your work by running the program from the command 
+#line. Feel free to get fancy with loops and whatnot, or keep 
+#it simple if you prefer.
+
+santas = []
+santas << Santa.new("man", "white")
+santas << Santa.new("woman", "black")
+santas << Santa.new("boy", "latino")
+santas << Santa.new("girl", "asian")
+
+
+santas.each do |santa|
+  santa.introduce
+end
+
