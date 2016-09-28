@@ -1,4 +1,8 @@
-# write a method that takes an array of integers and an integer to search for. The method should return the index of the item, or nil if the integer is not present in the array. Don't use built-in array methods like .index. You are allowed to use .length and .each.
+# write a method that takes an array of integers and an integer 
+#to search for. The method should return the index of the item, 
+#or nil if the integer is not present in the array. Don't use 
+#built-in array methods like .index. You are allowed to use 
+#.length and .each.
 
 array = [1, 2, 3, 4, 3, 2, 1]
 
@@ -66,11 +70,19 @@ puts fibonacci(100) == 218922995834555169026
 
 ########################
 
-# Choose a simple sorting algorithm to learn about. Bubble sort or insertion sort are good ones for beginners, but you're welcome to be more adventurous.
-# Form a conceptual understanding of how the algorithm works. What helps you grasp it? Do visualizations help? How can you find the right materials for yourself?
-# Notice your emotional state as you tackle this algorithm: do you feel frustrated, underqualified, stupid, or overwhelmed? Or is it more like excitement and curiosity? How do you think these feelings affect your ability to learn?
-# Pseudocode a sorting method that takes an array of integers and uses a sorting algorithm. The method should return a sorted version of the array. Your pseudocode should not be Ruby-specific.
-# Implement the sorting method in Ruby.
+# Choose a simple sorting algorithm to learn about. 
+#Bubble sort or insertion sort are good ones for beginners, 
+#but you're welcome to be more adventurous.
+
+# Form a conceptual understanding of how the algorithm works. 
+#What helps you grasp it? Do visualizations help? How can 
+#you find the right materials for yourself?
+
+# Notice your emotional state as you tackle this algorithm: 
+#do you feel frustrated, underqualified, stupid, or overwhelmed? 
+#Or is it more like excitement and curiosity? How do you think 
+#these feelings affect your ability to learn?
+
 
 def bubble_sort(array)
   n = array.length   # assigns array length to variable n
@@ -99,3 +111,32 @@ end
 array = [2, 10, 8, 4, 6]
 
 p bubble_sort(array)
+
+# Pseudocode a sorting method that takes an array of integers 
+#and uses a sorting algorithm. The method should return a sorted 
+#version of the array. Your pseudocode should not be Ruby-specific.
+
+# create example ordered database for all possible integers
+# create piles for grouping matches
+# pick up character and compare to ordered database
+# place into matching group
+# compile by arranging matching groups in order
+
+
+# Implement the sorting method in Ruby.
+
+
+ordered_integers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+matching_groups = {}
+
+# create hash to store all matching groups
+
+ordered_integers.each do |integer|
+  matching_groups[integer] = []
+end
+  
+
+
+
+
+
