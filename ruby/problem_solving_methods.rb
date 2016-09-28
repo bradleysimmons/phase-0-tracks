@@ -127,16 +127,28 @@ p bubble_sort(array)
 
 
 ordered_integers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-matching_groups = {}
+
+unordered_integers = [1, 3, 5, 3, 7, 8, 9,]
 
 # create hash to store all matching groups
+
+matching_groups = {}
 
 ordered_integers.each do |integer|
   matching_groups[integer] = []
 end
   
+# sort method
+
+# def sort_integer_array(array)
+  unordered_integers.each do |integer|
+    matching_groups[integer] << "#{integer}"
+  end
+# end
 
 
 
+
+p matching_groups
 
 
