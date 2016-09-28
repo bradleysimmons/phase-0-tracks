@@ -128,28 +128,28 @@ p bubble_sort(array)
 
 ordered_integers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-unordered_integers = [1, 3, 5, 3, 7, 8, 9]
+unordered_integers = [1, 5, 4, 3, 7, 2, 9, 3]
 
 # create hash to store all matching groups
 
-matching_groups = {}
 
-ordered_integers.each do |integer|
-  matching_groups[integer] = []
-end
-  
-# sort method
 
-# def sort_integer_array(array)
-  unordered_integers.each do |integer|
-    matching_groups[integer] << "#{integer}"
-  end
+# ordered_integers.each do |integer|
+#   ordered_hash[integer] = []
 # end
+  
+# # sort method
+
+# # def sort_integer_array(array)
+#   unordered_integers.each do |integer|
+#     ordered_hash[integer] << "#{integer}"
+#   end
+# # end
 
 
 
 
-p matching_groups
+# p ordered_hash
 
 
 # go through an array pick the highest number
@@ -173,5 +173,64 @@ end
   return high_number
 end
 
-p high_number_finder(unordered_integers)
+# generate ordered array with all whole integers from zero to high number
+# in the future make more robust by accommodating negatives (search for array low first) 
+
+
+def ordered_array_generator(array)
+  ordered_array = []
+  ordered_hash = {}
+  array_length = high_number_finder(array)
+    
+    array_length.times do |i|
+      ordered_array << i + 1
+    end
+    
+    ordered_array.each do |integer|
+      if array.index(integer) != nil
+        ordered_hash[integer] = []
+      end
+    end
+
+    array.each do |integer|
+      ordered_hash[integer] << integer.to_s
+    end
+
+
+
+  p ordered_hash
+
+
+end
+
+# take integer from unordered array, find index # in ordered array
+
+
+
+
+## or generate hash with ordered keys up to high number
+
+# def ordered_hash_generator(array)
+#   ordered_hash = {}
+#   if
+#   p ordered_hash
+# end
+
+ordered_array_generator(unordered_integers)
+
+
+
+# p ordered_hash
+
+# push instance of integer into corresponding key
+# delete empty keys
+# flatten, turn into array
+
+
+# iterate through unordered, to find index # in ordered array
+# will look from left to right, so should be created in order
+
+
+
+
 
