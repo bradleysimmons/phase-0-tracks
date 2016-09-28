@@ -128,7 +128,7 @@ p bubble_sort(array)
 
 ordered_integers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-unordered_integers = [1, 3, 5, 3, 7, 8, 9,]
+unordered_integers = [1, 3, 5, 3, 7, 8, 9]
 
 # create hash to store all matching groups
 
@@ -151,4 +151,27 @@ end
 
 p matching_groups
 
+
+# go through an array pick the highest number
+    
+def establish_high_number(array)
+    if array[0] > array[1]
+      return array [0]
+    else array[0] < array[1]
+      return array [1]
+    end
+end
+
+
+def high_number_finder(array)
+high_number = establish_high_number(array) 
+array.each do |integer|
+  if integer > high_number
+   high_number = integer
+  end
+end
+  return high_number
+end
+
+p high_number_finder(unordered_integers)
 
