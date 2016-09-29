@@ -4,7 +4,7 @@
 #built-in array methods like .index. You are allowed to use 
 #.length and .each.
 
-array = [1, 2, 3, 4, 3, 2, 1]
+array_one = [1, 2, 3, 4, 3, 2, 1]
 
 
 def search(array_name, integer)
@@ -24,9 +24,9 @@ def search(array_name, integer)
   end
 end
 
-search(array, 3)
-search(array, 4)
-p search(array, 5)
+search(array_one, 3)
+search(array_one, 4)
+p search(array_one, 5)
 
 ################# i wanted to make an interface but it is currently broken
 
@@ -108,7 +108,7 @@ def bubble_sort(array)
   array
 end
 
-array = [2, 10, 999, 4, 6]
+array = [13, 5, 9999999, 3, 7, 2, 9, 3,]
 
 p bubble_sort(array)
 
@@ -125,9 +125,9 @@ p bubble_sort(array)
 
 # Implement the sorting method in Ruby.
 
-unordered_integers = [13, 5, 9999999, 3, 7, 2, 9, 3,]
+unordered_integers = [13, 5, 9999999, 3, 7, 2, 4, 3,]
 
-# iterate through array to find the highest number
+# # iterate through array to find the highest number
     
 def establish_high_number(array)
     if array[0] > array[1]
@@ -137,8 +137,10 @@ def establish_high_number(array)
     end
 end
 
+# p establish_high_number(unordered_integers)
+
 def high_number_finder(array)
-high_number = establish_high_number(array) 
+high_number = establish_high_number(array)
   array.each do |integer|
     if integer > high_number
      high_number = integer
@@ -147,13 +149,30 @@ high_number = establish_high_number(array)
   return high_number
 end
 
-## work on method for low number.
-# high - all #'s?
-# or do the same method, in reverse?
+# p high_number_finder(unordered_integers)
 
+# ## work on method for low number.
+# # high - all #'s?
+# # or do the same method, in reverse?
 
-# generate ordered array with all whole integers from zero to high number
-# in the future make more robust by accommodating negatives (search for array low first) 
+# # also look at implementing distance from low number to zero to possibly cut areas
+# # of linear search down as much as possible
+
+# def intelligence_collector(array)
+#   difference = []
+#   high_number = high_number_finder(array)
+#   array.each do |integer|
+#     p high_number - integer
+#     difference << high_number - integer
+#   end
+#   low_number = array[difference.index(high_number_finder(difference))]
+
+# end
+
+# p intelligence_collector(unordered_integers)
+
+# # generate ordered array with all whole integers from zero to high number
+# # in the future make more robust by accommodating negatives (search for array low first) 
 
 def ordered_array_generator(array)
   ordered_hash = {}
@@ -161,8 +180,8 @@ def ordered_array_generator(array)
     
     array_length.times do |i|
 
-# check for integer in unordered array by seeing if index = nil
-# if it's there, create a corresponding key in the hash
+# # check for integer in unordered array by seeing if index = nil
+# # if it's there, create a corresponding key in the hash
 
       if array.index(i) != nil
         ordered_hash[i] = []
@@ -170,8 +189,8 @@ def ordered_array_generator(array)
 
     end
 
-# push instance of integer into corresponding key
-# print values
+# # push instance of integer into corresponding key
+# # print values
 
   array.each do |integer|
     ordered_hash[integer] << integer
@@ -185,6 +204,78 @@ ordered_array_generator(unordered_integers)
 
 
 
+=begin got curious about another one, below here is basically notes
+
+# creates array with x amount of arrays for unordered array length
+
+random_order_array = [22, 6, 8, 3, 8, 9, 999, -4, 100000]
+
+# check high number push to last
+
+def is_first_high(array)
+    if array[0] > array[1]
+      return true
+    end
+end
+
+# p is_first_high(random_order_array)
+
+def high_number_finder(array)
+  if is_first_high(array) == true
+    high_number = array[0]
+  else
+    high_number = array[1]
+  end
+  
+  return high_number
+end
+
+  
+def last_sequence_finder(array)
+  last_sequence = []
+  high_number = high_number_finder(array)
+  array.each do |integer|
+    if integer >= high_number
+      # reassign or make list?
+      high_number = integer # reassign  
+      last_sequence << integer
+    end
+  end
+
+  return last_sequence
+end
+
+def sort(array)
+  last_sequence = last_sequence_finder(array)
+  last_sequence_length = last_sequence.length 
+  
+
+
+
+  sorted_array = []
+  # array.length.times do
+  #    sorted_array << []
+  # end
+  
+  
+  index_break_point = array.length - last_sequence_length + 1
+
+  
+  last_sequence_length.times do |i|
+    sorted_array.push(last_sequence[i])
+  end
+
+p sorted_array
+  
+
+  
+end
+
+
+  
+
+
+p sort(random_order_array)
 
 
 
@@ -193,4 +284,16 @@ ordered_array_generator(unordered_integers)
 
 
 
+
+
+# check low number push to first
+
+# first push to [-1]
+# then to [0]
+# then [-2]
+# then [1]
+
+
+
+=end
 
