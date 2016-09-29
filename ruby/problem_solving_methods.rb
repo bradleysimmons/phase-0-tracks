@@ -108,7 +108,7 @@ def bubble_sort(array)
   array
 end
 
-array = [13, 5, 9999999, 3, 7, 2, 9, 3,]
+array = [13, 5, 9999, 3, 7, 2, 9, 3,]
 
 p bubble_sort(array)
 
@@ -125,7 +125,12 @@ p bubble_sort(array)
 
 # Implement the sorting method in Ruby.
 
-unordered_integers = [13, 5, 9999999, 3, 7, 2, 4, 3,]
+
+unordered_integers = []
+
+999.times do 
+  unordered_integers << rand(251)
+end
 
 # # iterate through array to find the highest number
     
@@ -252,10 +257,7 @@ def sort(array)
 
 
 
-  sorted_array = []
-  # array.length.times do
-  #    sorted_array << []
-  # end
+  
   
   
   index_break_point = array.length - last_sequence_length + 1
@@ -292,6 +294,9 @@ p sort(random_order_array)
 # then to [0]
 # then [-2]
 # then [1]
+
+
+
 
 
 
