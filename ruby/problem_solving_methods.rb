@@ -125,7 +125,7 @@ p bubble_sort(array)
 
 # Implement the sorting method in Ruby.
 
-unordered_integers = [13, 5, 99999, 3, 7, 2, 9, 3,]
+unordered_integers = [13, 5, 9999999, 3, 7, 2, 9, 3,]
 
 # iterate through array to find the highest number
     
@@ -156,8 +156,17 @@ def ordered_array_generator(array)
   array_length = high_number_finder(array) + 1
     
     array_length.times do |i|
-      ordered_array << i 
+
+# check for integer in unordered array by seeing if index = nil
+# if it's there put it in the array
+
+      if array.index(i) != nil
+        ordered_array << i 
+        p ordered_array
+      end
     end
+
+
     
 # iterate through unordered, to find index # in ordered array
 # will look from left to right, so should be created in order
