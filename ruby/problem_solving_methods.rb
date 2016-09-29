@@ -108,7 +108,7 @@ def bubble_sort(array)
   array
 end
 
-array = [2, 10, 8, 4, 6]
+array = [2, 10, 999, 4, 6]
 
 p bubble_sort(array)
 
@@ -125,34 +125,9 @@ p bubble_sort(array)
 
 # Implement the sorting method in Ruby.
 
+unordered_integers = [13, 5, 99999, 3, 7, 2, 9, 3,]
 
-ordered_integers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-unordered_integers = [1, 5, 4, 3, 7, 2, 9, 3]
-
-# create hash to store all matching groups
-
-
-
-# ordered_integers.each do |integer|
-#   ordered_hash[integer] = []
-# end
-  
-# # sort method
-
-# # def sort_integer_array(array)
-#   unordered_integers.each do |integer|
-#     ordered_hash[integer] << "#{integer}"
-#   end
-# # end
-
-
-
-
-# p ordered_hash
-
-
-# go through an array pick the highest number
+# iterate through array to find the highest number
     
 def establish_high_number(array)
     if array[0] > array[1]
@@ -162,73 +137,57 @@ def establish_high_number(array)
     end
 end
 
-
 def high_number_finder(array)
 high_number = establish_high_number(array) 
-array.each do |integer|
-  if integer > high_number
-   high_number = integer
+  array.each do |integer|
+    if integer > high_number
+     high_number = integer
+    end
   end
-end
   return high_number
 end
 
 # generate ordered array with all whole integers from zero to high number
 # in the future make more robust by accommodating negatives (search for array low first) 
 
-
 def ordered_array_generator(array)
   ordered_array = []
   ordered_hash = {}
-  array_length = high_number_finder(array)
+  array_length = high_number_finder(array) + 1
     
     array_length.times do |i|
-      ordered_array << i + 1
+      ordered_array << i 
     end
     
-    ordered_array.each do |integer|
-      if array.index(integer) != nil
-        ordered_hash[integer] = []
-      end
+# iterate through unordered, to find index # in ordered array
+# will look from left to right, so should be created in order
+
+  ordered_array.each do |integer|     ### takes advantage of left to right searching
+    if array.index(integer) != nil
+      ordered_hash[integer] = []
     end
+  end
 
-    array.each do |integer|
-      ordered_hash[integer] << integer.to_s
-    end
+# push instance of integer into corresponding key
+# print values
 
-
-
-  p ordered_hash
-
+  array.each do |integer|
+    ordered_hash[integer] << integer
+  end
+    
+  p ordered_hash.values
 
 end
 
-# take integer from unordered array, find index # in ordered array
-
-
-
-
-## or generate hash with ordered keys up to high number
-
-# def ordered_hash_generator(array)
-#   ordered_hash = {}
-#   if
-#   p ordered_hash
-# end
 
 ordered_array_generator(unordered_integers)
 
 
 
-# p ordered_hash
-
-# push instance of integer into corresponding key
-# delete empty keys
-# flatten, turn into array
 
 
-# iterate through unordered, to find index # in ordered array
-# will look from left to right, so should be created in order
+
+
 
 
 
