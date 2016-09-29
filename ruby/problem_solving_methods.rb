@@ -1,6 +1,10 @@
-# write a method that takes an array of integers and an integer to search for. The method should return the index of the item, or nil if the integer is not present in the array. Don't use built-in array methods like .index. You are allowed to use .length and .each.
+# write a method that takes an array of integers and an integer 
+#to search for. The method should return the index of the item, 
+#or nil if the integer is not present in the array. Don't use 
+#built-in array methods like .index. You are allowed to use 
+#.length and .each.
 
-array = [1, 2, 3, 4, 3, 2, 1]
+array_one = [1, 2, 3, 4, 3, 2, 1]
 
 
 def search(array_name, integer)
@@ -20,9 +24,9 @@ def search(array_name, integer)
   end
 end
 
-search(array, 3)
-search(array, 4)
-p search(array, 5)
+search(array_one, 3)
+search(array_one, 4)
+p search(array_one, 5)
 
 ################# i wanted to make an interface but it is currently broken
 
@@ -66,11 +70,19 @@ puts fibonacci(100) == 218922995834555169026
 
 ########################
 
-# Choose a simple sorting algorithm to learn about. Bubble sort or insertion sort are good ones for beginners, but you're welcome to be more adventurous.
-# Form a conceptual understanding of how the algorithm works. What helps you grasp it? Do visualizations help? How can you find the right materials for yourself?
-# Notice your emotional state as you tackle this algorithm: do you feel frustrated, underqualified, stupid, or overwhelmed? Or is it more like excitement and curiosity? How do you think these feelings affect your ability to learn?
-# Pseudocode a sorting method that takes an array of integers and uses a sorting algorithm. The method should return a sorted version of the array. Your pseudocode should not be Ruby-specific.
-# Implement the sorting method in Ruby.
+# Choose a simple sorting algorithm to learn about. 
+#Bubble sort or insertion sort are good ones for beginners, 
+#but you're welcome to be more adventurous.
+
+# Form a conceptual understanding of how the algorithm works. 
+#What helps you grasp it? Do visualizations help? How can 
+#you find the right materials for yourself?
+
+# Notice your emotional state as you tackle this algorithm: 
+#do you feel frustrated, underqualified, stupid, or overwhelmed? 
+#Or is it more like excitement and curiosity? How do you think 
+#these feelings affect your ability to learn?
+
 
 def bubble_sort(array)
   n = array.length   # assigns array length to variable n
@@ -96,6 +108,192 @@ def bubble_sort(array)
   array
 end
 
-array = [2, 10, 8, 4, 6]
+array = [13, 5, 9999999, 3, 7, 2, 9, 3,]
 
 p bubble_sort(array)
+
+# Pseudocode a sorting method that takes an array of integers 
+#and uses a sorting algorithm. The method should return a sorted 
+#version of the array. Your pseudocode should not be Ruby-specific.
+
+# create example ordered database for all possible integers
+# create piles for grouping matches
+# pick up character and compare to ordered database
+# place into matching group
+# compile by arranging matching groups in order
+
+
+# Implement the sorting method in Ruby.
+
+unordered_integers = [13, 5, 9999999, 3, 7, 2, 4, 3,]
+
+# # iterate through array to find the highest number
+    
+def establish_high_number(array)
+    if array[0] > array[1]
+      return array [0]
+    else array[0] < array[1]
+      return array [1]
+    end
+end
+
+# p establish_high_number(unordered_integers)
+
+def high_number_finder(array)
+high_number = establish_high_number(array)
+  array.each do |integer|
+    if integer > high_number
+     high_number = integer
+    end
+  end
+  return high_number
+end
+
+# p high_number_finder(unordered_integers)
+
+# ## work on method for low number.
+# # high - all #'s?
+# # or do the same method, in reverse?
+
+# # also look at implementing distance from low number to zero to possibly cut areas
+# # of linear search down as much as possible
+
+# def intelligence_collector(array)
+#   difference = []
+#   high_number = high_number_finder(array)
+#   array.each do |integer|
+#     p high_number - integer
+#     difference << high_number - integer
+#   end
+#   low_number = array[difference.index(high_number_finder(difference))]
+
+# end
+
+# p intelligence_collector(unordered_integers)
+
+# # generate ordered array with all whole integers from zero to high number
+# # in the future make more robust by accommodating negatives (search for array low first) 
+
+def ordered_array_generator(array)
+  ordered_hash = {}
+  array_length = high_number_finder(array) + 1
+    
+    array_length.times do |i|
+
+# # check for integer in unordered array by seeing if index = nil
+# # if it's there, create a corresponding key in the hash
+
+      if array.index(i) != nil
+        ordered_hash[i] = []
+      end
+
+    end
+
+# # push instance of integer into corresponding key
+# # print values
+
+  array.each do |integer|
+    ordered_hash[integer] << integer
+  end
+    
+  p ordered_hash.values
+
+end
+
+ordered_array_generator(unordered_integers)
+
+
+
+=begin got curious about another one, below here is basically notes
+
+# creates array with x amount of arrays for unordered array length
+
+random_order_array = [22, 6, 8, 3, 8, 9, 999, -4, 100000]
+
+# check high number push to last
+
+def is_first_high(array)
+    if array[0] > array[1]
+      return true
+    end
+end
+
+# p is_first_high(random_order_array)
+
+def high_number_finder(array)
+  if is_first_high(array) == true
+    high_number = array[0]
+  else
+    high_number = array[1]
+  end
+  
+  return high_number
+end
+
+  
+def last_sequence_finder(array)
+  last_sequence = []
+  high_number = high_number_finder(array)
+  array.each do |integer|
+    if integer >= high_number
+      # reassign or make list?
+      high_number = integer # reassign  
+      last_sequence << integer
+    end
+  end
+
+  return last_sequence
+end
+
+def sort(array)
+  last_sequence = last_sequence_finder(array)
+  last_sequence_length = last_sequence.length 
+  
+
+
+
+  sorted_array = []
+  # array.length.times do
+  #    sorted_array << []
+  # end
+  
+  
+  index_break_point = array.length - last_sequence_length + 1
+
+  
+  last_sequence_length.times do |i|
+    sorted_array.push(last_sequence[i])
+  end
+
+p sorted_array
+  
+
+  
+end
+
+
+  
+
+
+p sort(random_order_array)
+
+
+
+
+
+
+
+
+
+
+# check low number push to first
+
+# first push to [-1]
+# then to [0]
+# then [-2]
+# then [1]
+
+
+
+=end
+
