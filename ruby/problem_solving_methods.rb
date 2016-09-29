@@ -147,35 +147,28 @@ high_number = establish_high_number(array)
   return high_number
 end
 
+## work on method for low number.
+# high - all #'s?
+# or do the same method, in reverse?
+
+
 # generate ordered array with all whole integers from zero to high number
 # in the future make more robust by accommodating negatives (search for array low first) 
 
 def ordered_array_generator(array)
-  ordered_array = []
   ordered_hash = {}
   array_length = high_number_finder(array) + 1
     
     array_length.times do |i|
 
 # check for integer in unordered array by seeing if index = nil
-# if it's there put it in the array
+# if it's there, create a corresponding key in the hash
 
       if array.index(i) != nil
-        ordered_array << i 
-        p ordered_array
+        ordered_hash[i] = []
       end
+
     end
-
-
-    
-# iterate through unordered, to find index # in ordered array
-# will look from left to right, so should be created in order
-
-  ordered_array.each do |integer|     ### takes advantage of left to right searching
-    if array.index(integer) != nil
-      ordered_hash[integer] = []
-    end
-  end
 
 # push instance of integer into corresponding key
 # print values
@@ -187,7 +180,6 @@ def ordered_array_generator(array)
   p ordered_hash.values
 
 end
-
 
 ordered_array_generator(unordered_integers)
 
