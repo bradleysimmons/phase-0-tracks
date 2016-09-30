@@ -24,12 +24,11 @@ class Word_game
   def check_if_already_guessed(guess)
     if @guesses.empty?
       return false
+    elsif
+      @guesses.index(guess) != nil
+      return true
     else
-      @guesses.each do |letter|
-        if guess != letter
-          return false
-        end
-      end
+      return false
     end
   end
 
@@ -113,11 +112,7 @@ end
             puts word.losing_message
           end
         end
+      else
+        puts "letter already guessed"
       end
     end
-
-
-
-
-  # for tomorrow:
-    # check to see if storing guesses properly

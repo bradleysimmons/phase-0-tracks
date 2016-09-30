@@ -35,7 +35,7 @@ describe Word_game do
   end
 
   it "pushes guess into guesses array" do
-    expect(secret_word.store_guess_in_guesses("a")).to eq (@guesses = ["a"])
+    expect(secret_word.store_guess_in_guesses("a")).to eq (["a"])
   end
 
   it "confirm empty guesses array" do
