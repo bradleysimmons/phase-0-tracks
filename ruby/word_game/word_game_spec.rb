@@ -48,7 +48,6 @@ describe Word_game do
   end
 
   it "update with correct guess" do
-    # expect(secret_word.update_current_guess("e")).to eq ([1, 4])
     expect(secret_word.update_current_guess("e")).to eq (["-", "e", "-", "-", "e", "-"])
   end
 

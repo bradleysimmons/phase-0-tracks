@@ -46,13 +46,8 @@ class Word_game
   def update_current_guess(guess)
      matches = []
 
-    # take guess as parameter
-    # p guess
-
-    # also have secret word available
-    # p @secret_word
-
     # find index numbers where guess = a letter in secret word
+    # store in matches array
 
     index_number = 0
     @secret_word.each do |letter|
@@ -61,8 +56,6 @@ class Word_game
       end
     index_number += 1
     end
-
-    # p matches
     
     # delete "-" at those index numbers in current guess array
     # insert guess at those index numbers in current guess array
@@ -75,42 +68,51 @@ class Word_game
     return @current_guess
   end   
 
+  def check_if_game_over
+    if @current_guess == @secret_word
+      return true
+    end
+  end
+
 end
 
 
 #### driver code
 
-    # puts "player one:"
-    # puts "please enter the secret word:"
+    puts "player one:"
+    puts "please enter the secret word:"
 
-    # secret_word = gets.chomp
-    # word = Word_game.new(secret_word)
+    secret_word = gets.chomp
+    word = Word_game.new(secret_word)
 
     
-    # puts "player two:"
-    # puts "the secret word is #{secret_word.length} characters long"
+    puts "player two:"
+    puts "the secret word is #{secret_word.length} characters long"
 
-    # until word.guess_count == word.guess_limit 
-    #   puts "please guess a letter"
-    #   guess = gets.chomp
-    #   if word.check_if_already_guessed(guess) == false
-    #     if word.check_if_in_word(guess) == true
-    #       puts "match"
-    #       word.store_guess_in_guesses(guess)
-    #       word.update_current_guess(guess)
-    #       p word.current_guess
-    #       word.guess_count += 1
-    #     else
-    #       puts "letter not found"
-    #       word.store_guess_in_guesses(guess)
-    #       p word.current_guess
-    #       word.guess_count += 1
-    #     end
-    #   end
-    # end
+    until word.guess_count == word.guess_limit 
+      if word.check_if_game_over == true
+        puts word.congratulatory_message
+        break
+      end
+      puts "please guess a letter"
+      guess = gets.chomp
+      if word.check_if_already_guessed(guess) == false
+        if word.check_if_in_word(guess) == true
+          puts "match"
+          word.store_guess_in_guesses(guess)
+          word.update_current_guess(guess)
+          p word.current_guess
+          word.guess_count += 1
+        else
+          puts "letter not found"
+          word.store_guess_in_guesses(guess)
+          p word.current_guess
+          word.guess_count += 1
+        end
+      end
+    end
 
 
   # for tomorrow:
-    # handle multiple occurences of letter
     # stop if problem solved
     # check to see if storing guesses properly
