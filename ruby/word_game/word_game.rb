@@ -9,7 +9,7 @@ class Word_game
   attr_reader :losing_message
 
   def initialize(word)
-    @secret_word = word
+    @secret_word = word.split("")
     @current_guess = []
       word.length.times do |character|
         @current_guess << "-"
@@ -21,11 +21,96 @@ class Word_game
     @losing_message = "you lost!"
   end
 
-  
-
-  def split_secret_word_to_array
-    @secret_word.split("")
+  def check_if_already_guessed(guess)
+    if @guesses.empty?
+      return false
+    else
+      @guesses.each do |letter|
+        if guess != letter
+          return false
+        end
+      end
+    end
   end
 
-  
+  def check_if_in_word(guess)
+    if @secret_word.index(guess) != nil
+      return true
+    end
+  end
+
+  def store_guess_in_guesses(guess)
+    @guesses.push(guess)
+  end
+
+  def update_current_guess(guess)
+     matches = []
+
+    # take guess as parameter
+    # p guess
+
+    # also have secret word available
+    # p @secret_word
+
+    # find index numbers where guess = a letter in secret word
+
+    index_number = 0
+    @secret_word.each do |letter|
+      if guess == letter
+        matches.push(index_number)
+      end
+    index_number += 1
+    end
+
+    # p matches
+    
+    # delete "-" at those index numbers in current guess array
+    # insert guess at those index numbers in current guess array
+
+    matches.each do |index_number|
+      @current_guess.delete_at(index_number)
+      @current_guess.insert(index_number, guess)
+    end
+
+    return @current_guess
+  end   
+
 end
+
+
+#### driver code
+
+    # puts "player one:"
+    # puts "please enter the secret word:"
+
+    # secret_word = gets.chomp
+    # word = Word_game.new(secret_word)
+
+    
+    # puts "player two:"
+    # puts "the secret word is #{secret_word.length} characters long"
+
+    # until word.guess_count == word.guess_limit 
+    #   puts "please guess a letter"
+    #   guess = gets.chomp
+    #   if word.check_if_already_guessed(guess) == false
+    #     if word.check_if_in_word(guess) == true
+    #       puts "match"
+    #       word.store_guess_in_guesses(guess)
+    #       word.update_current_guess(guess)
+    #       p word.current_guess
+    #       word.guess_count += 1
+    #     else
+    #       puts "letter not found"
+    #       word.store_guess_in_guesses(guess)
+    #       p word.current_guess
+    #       word.guess_count += 1
+    #     end
+    #   end
+    # end
+
+
+  # for tomorrow:
+    # handle multiple occurences of letter
+    # stop if problem solved
+    # check to see if storing guesses properly
