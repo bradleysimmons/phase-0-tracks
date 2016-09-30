@@ -90,6 +90,7 @@ end
     puts "the secret word is #{secret_word.length} characters long"
 
     until word.guess_count == word.guess_limit 
+      puts "you have #{(word.guess_limit - word.guess_count)} guesses remaining"
       if word.check_if_game_over == true
         puts word.congratulatory_message
         break
@@ -108,11 +109,15 @@ end
           word.store_guess_in_guesses(guess)
           p word.current_guess
           word.guess_count += 1
+          if (word.guess_limit - word.guess_count) == 0
+            puts word.losing_message
+          end
         end
       end
     end
 
 
+
+
   # for tomorrow:
-    # stop if problem solved
     # check to see if storing guesses properly
