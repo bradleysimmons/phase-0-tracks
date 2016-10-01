@@ -155,20 +155,20 @@ end
     
     puts "player one:"
     until
-    puts "please enter the secret word:"
+      puts "please enter the secret word:"
 
-    secret_word = gets.chomp
-    secret_word = secret_word.downcase
-    word = Word_game.new(secret_word)
+      secret_word = gets.chomp
+      secret_word = secret_word.downcase
+      word = Word_game.new(secret_word)
 
-    # have to check after initializing instance to gain access to method
+      # have to check after initializing instance to gain access to method
 
-      if word.secret_word_valid_input(secret_word) == false 
-           puts "invalid input: no spaces, numbers, or symbols"
-           puts "\n"
-      else
-        break
-      end
+        if word.secret_word_valid_input(secret_word) == false 
+             puts "invalid input: no spaces, numbers, or symbols"
+             puts "\n"
+        else
+          break
+        end
     end
 
     puts "\n"
