@@ -10,11 +10,54 @@
 // problem logically.
 
 
-// find last character and add to new string
-// find second to last character and add to string
-// build a loop that increments this 
-// and adds to new string until
-// new string and input string length are equal
 
+// //create input and test 
+
+// var inputstring = "word";
+// console.log(inputstring);
+
+// //create output string 
+
+// var outputstring = "";
+
+// //find last character
+
+// console.log(inputstring.length - 1);
+// console.log(inputstring[inputstring.length - 1]);
+
+// //and add to new string
+
+// outputstring += inputstring[inputstring.length - 1];
+// console.log(outputstring);
+
+// //find second to last character and add to string
+
+// outputstring += inputstring[inputstring.length - 2];
+// console.log(outputstring);
+
+// //build a loop that increments this
+// //and adds to new string until
+// //new string and input string length are equal
+
+// for (var i = 1; i <= inputstring.length; i++) {
+  // outputstring += inputstring[inputstring.length - i];
+// }
+
+// place in function
+
+function reverse(inputstring) {
+  var outputstring = "";
+
+  for (var i = 1; i <= inputstring.length; i++) {
+  outputstring += inputstring[inputstring.length - i];
+}
+
+return outputstring;
+
+}
+
+// test with driver code
+
+console.log(reverse("test"));
 
 
