@@ -58,6 +58,29 @@ return outputstring;
 
 // test with driver code
 
-console.log(reverse("test"));
+// console.log(reverse("test"));
+
+// add driver code with conditional
+// if palindrome, returns statement
+
+// add driver code to print
+
+
+
+function printreverseifnotpalindrome(word){
+  if (reverse(word) != word) {
+    var reversedword = (reverse(word));
+  }
+  else {
+    var reversedword = "input is a palindrome";
+  }
+  if (1 == 1) {
+    console.log(reversedword);
+  }
+}
+
+printreverseifnotpalindrome("test");
+printreverseifnotpalindrome("racecar");
+printreverseifnotpalindrome("palindrome");
 
 
