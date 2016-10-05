@@ -43,21 +43,13 @@
 
 class Word_game
 
-  attr_reader :secret_word
-  attr_accessor :current_guess
-  attr_reader :guess_limit
-  attr_accessor :guess_count
-  attr_accessor :guesses
-  attr_reader :congratulatory_message
-  attr_reader :losing_message
+  attr_reader :secret_word, :guess_limit,:congratulatory_message, :losing_message
+  attr_accessor :current_guess, :guesses, :guess_count
 
   def initialize(word)
     @secret_word = word.split("")
-    @current_guess = []
-      
-      word.length.times do |character|
-        @current_guess << "-"
-      end
+    @current_guess = ("-" * word.length).split("")
+    @guess_count = 0
       
       if word.length > 10
         @guess_limit = word.length + 3
@@ -67,7 +59,6 @@ class Word_game
         @guess_limit = word.length * 2
       end
     
-    @guess_count = 0
     @guesses = []
     @congratulatory_message = "you won!"
     @losing_message = "you lost!"
