@@ -79,10 +79,6 @@ class Word_game
   end
 
   def update_current_guess(guess)
-
-    # find index numbers where guess = a letter in secret word
-    # replace
-   
     @secret_word.each_with_index do |letter, index|
       if guess == letter
         @current_guess[index] = @secret_word[index]
@@ -99,10 +95,12 @@ class Word_game
   end
 
   def secret_word_valid_input(secret_word)
-    secret_word_array = secret_word.split("")
-
-    secret_word_array.each do |character|
+    if 
+      secret_word.split("").each do |character|
       @valid_string.include?(character)
+      end
+    else
+      false
     end
   end
 end
@@ -121,7 +119,7 @@ end
 
       # have to check after initializing instance to gain access to method
 
-        if word.secret_word_valid_input(secret_word) == false 
+        if word.secret_word_valid_input(secret_word) == false
              puts "invalid input: no spaces, numbers, or symbols"
              puts "\n"
         else
@@ -139,15 +137,15 @@ end
       puts "please guess a letter:"
       guess = gets.chomp
       guess = guess.downcase
-      if word.guess_valid_input(guess) == true
-        if word.check_if_already_guessed(guess) == false
-          if word.check_if_in_word(guess) == true
+      if word.guess_valid_input(guess)
+        if word.check_if_already_guessed(guess) != true
+          if word.check_if_in_word(guess)
             puts "match"
             word.store_guess_in_guesses(guess)
             word.update_current_guess(guess)
             puts "secret word: #{word.current_guess.join("")}"
             word.guess_count += 1
-            if word.check_if_game_over == true
+            if word.check_if_game_over
               puts "\n"
               puts word.congratulatory_message
               puts "the secret word is: #{word.secret_word.join("")}"
@@ -158,7 +156,7 @@ end
             word.store_guess_in_guesses(guess)
             puts "secret word: #{word.current_guess.join("")}"
             word.guess_count += 1
-            if word.check_if_game_over == true
+            if word.check_if_game_over
               puts "\n"
               puts word.losing_message
               puts "the secret word is: #{word.secret_word.join("")}"

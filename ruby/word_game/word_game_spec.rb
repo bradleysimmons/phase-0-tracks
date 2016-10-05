@@ -43,7 +43,7 @@ describe Word_game do
   end
 
   it "check if in word" do
-    expect(secret_word.check_if_in_word("a")).to eq (nil)
+    expect(secret_word.check_if_in_word("a")).to eq (false)
     expect(secret_word.check_if_in_word("e")).to eq (true)
   end
 
