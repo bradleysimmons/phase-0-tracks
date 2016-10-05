@@ -62,23 +62,16 @@ class Word_game
     @guesses = []
     @congratulatory_message = "you won!"
     @losing_message = "you lost!"
+    @valid_string = "abcdefghijklmnopqrstuvwxyz"
   end
 
   def check_if_already_guessed(guess)
-    if @guesses.empty?
-      return false
-    elsif
-      @guesses.index(guess) != nil
-      return true
-    else
-      return false
-    end
+    @guesses.include?(guess)
   end
+    
 
   def check_if_in_word(guess)
-    if @secret_word.index(guess) != nil
-      return true
-    end
+    @secret_word.include?(guess)
   end
 
   def store_guess_in_guesses(guess)
@@ -86,58 +79,32 @@ class Word_game
   end
 
   def update_current_guess(guess)
-     matches = []
 
     # find index numbers where guess = a letter in secret word
-    # store in matches array
-
-    index_number = 0
-    @secret_word.each do |letter|
+    # replace
+   
+    @secret_word.each_with_index do |letter, index|
       if guess == letter
-        matches.push(index_number)
+        @current_guess[index] = @secret_word[index]
       end
-    index_number += 1
     end
-    
-    # delete "-" at those index numbers in current guess array
-    # insert guess at those index numbers in current guess array
-
-    matches.each do |index_number|
-      @current_guess.delete_at(index_number)
-      @current_guess.insert(index_number, guess)
-    end
-
-    return @current_guess
   end   
 
   def check_if_game_over
-    if @current_guess == @secret_word || (@guess_limit - @guess_count) == 0
-      return true
-    end
+    @current_guess == @secret_word || (@guess_limit - @guess_count) == 0
   end
 
   def guess_valid_input(guess)
-    valid_string = "abcdefghijklmnopqrstuvwxyz"
-    if valid_string.index(guess) != nil
-      return true
-    end
+    @valid_string.include?(guess)
   end
 
   def secret_word_valid_input(secret_word)
-    valid_string = "abcdefghijklmnopqrstuvwxyz"
-
-    secret_word_array = []
     secret_word_array = secret_word.split("")
 
     secret_word_array.each do |character|
-      if valid_string.index(character) == nil
-        return false
-      end
+      @valid_string.include?(character)
     end
-    return true
   end
-
-
 end
 
 
