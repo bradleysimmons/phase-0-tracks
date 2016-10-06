@@ -81,9 +81,10 @@ class Word_game
   def update_current_guess(guess)
     @secret_word.each_with_index do |letter, index|
       if guess == letter
-        @current_guess[index] = @secret_word[index]
+        @current_guess[index] = letter
       end
     end
+    @current_guess
   end   
 
   def check_if_game_over
@@ -91,16 +92,22 @@ class Word_game
   end
 
   def guess_valid_input(guess)
+    if guess == ""
+      false
+    else
     @valid_string.include?(guess)
+    end
   end
 
-  def secret_word_valid_input(secret_word)
-    if 
+  def secret_word_valid_input(secret_word) 
+    if  
       secret_word.split("").each do |character|
-      @valid_string.include?(character)
+        if @valid_string.index(character) == nil
+          return false
+        end
       end
     else
-      false
+      return true
     end
   end
 end
