@@ -15,7 +15,7 @@ describe Word_game do
   end
 
   it "stores guess limit upon initialization" do
-    expect(secret_word.guess_limit).to eq (16)
+    expect(secret_word.guess_limit).to eq (10)
   end
 
   it "stores guess count upon initialization" do
@@ -55,7 +55,12 @@ describe Word_game do
     expect(secret_word.secret_word_valid_input(" w ord ")).to eq (false)
     expect(secret_word.secret_word_valid_input("$word")).to eq (false)
     expect(secret_word.secret_word_valid_input("2word")).to eq (false)
-    expect(secret_word.secret_word_valid_input("word")).to eq (true)
+    expect(secret_word.secret_word_valid_input("word")).to eq (nil)
+  end
+
+  it "validate word input" do
+    expect(secret_word.guess_valid_input(" ")).to eq (false)
+    expect(secret_word.guess_valid_input("e")).to eq (true)
   end
 
 end
