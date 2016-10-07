@@ -3,9 +3,7 @@
 # I worked on this challenge [by myself, with: megan eding ].
 # We spent [2.5] hours on this challenge.
 
-# EXPLANATION OF require_relative
-#
-#
+
 require_relative 'state_data'
 # require_relative is to call in a file to the file you are currently working in.  The require_relative file is in the same folder as your current file.  
 # require is used to call in modules and other files not directly within your file structure.
@@ -29,14 +27,24 @@ class VirusPredictor
     # predicted deaths is solely based on population density
     # private method; calculation of deaths based on @population_density and @popultion.  The higher the density and population, the higher the death count.  Floor rounds the float down to the nearest integer.
     
-    if @population_density >= 200
-      number_of_deaths = (@population * 0.4).floor
-    elsif @population_density < 50 
-      number_of_deaths = (@population * 0.05).floor 
-    else 
-      increase = (@population_density/500)
-      number_of_deaths = (@population * increase).floor
-    end 
+    # from density 50 - 199
+    # if population density increases 50, number of deaths increases .1 of population
+
+    # if density 200 or over, 40% of population
+    # if under 50, 5% of population
+
+    # round 150-199 to 150
+    # round 149-100 to 100
+    # round 99-50 to 50
+
+     if @population_density >= 200
+       number_of_deaths = (@population * 0.4).floor
+     elsif @population_density >= 50 && @population_density < 200
+       percent_dead = (((@population_density / 50).floor) / 10.to_f)
+       number_of_deaths = (percent_dead * @population).floor
+     else
+      number_of_deaths = (@population * 0.05).floor
+     end 
 
   # printing our results in a readable way
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
@@ -46,6 +54,7 @@ class VirusPredictor
   def speed_of_spread #in months
     # We are still perfecting our formula here. The speed is also affected
     # by additional factors we haven't added into this functionality.
+    
     speed = 2.5
 
     if @population_density >= 200
