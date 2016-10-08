@@ -65,6 +65,17 @@ var long_string_finder_two = function(array) {
     }
   }
 
+  console.log("\n");
+  console.log("maximum string length: " + long_string.length);
+  
+  if (longest_strings.length == 1) {
+    console.log(longest_strings.length + " occurrence:");
+  } else if (longest_strings.length > 1) {
+    console.log(longest_strings.length + " occurrences:");
+    };
+
+  console.log(longest_strings);
+
   return longest_strings;
 
 };
@@ -164,22 +175,25 @@ var random_string_generator = function(integer) {
       }
       word_array.push(string);
     } 
+
+  console.log("\n");
+  console.log("returned " + word_array.length + " strings: ");  
   console.log(word_array);
   return word_array;
 };
 
 ////////// driver code
 
-console.log(long_string_finder_two(random_string_generator(4)));
-// console.log(long_string_finder_two(random_string_generator(1)));
-// console.log(long_string_finder_two(random_string_generator(1)));
-// console.log(long_string_finder_two(random_string_generator(1)));
-// console.log(long_string_finder_two(random_string_generator(1)));
-// console.log(long_string_finder_two(random_string_generator(2)));
-// console.log(long_string_finder_two(random_string_generator(2)));
-// console.log(long_string_finder_two(random_string_generator(2)));
-// console.log(long_string_finder_two(random_string_generator(2)));
-// console.log(long_string_finder_two(random_string_generator(2)));
+long_string_finder_two(random_string_generator(10));
+long_string_finder_two(random_string_generator(6));
+long_string_finder_two(random_string_generator(3));
+long_string_finder_two(random_string_generator(2));
+long_string_finder_two(random_string_generator(1));
+long_string_finder_two(random_string_generator(9));
+long_string_finder_two(random_string_generator(6));
+long_string_finder_two(random_string_generator(4));
+long_string_finder_two(random_string_generator(11));
+long_string_finder_two(random_string_generator(20));
 
 
 
