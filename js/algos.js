@@ -30,14 +30,11 @@ console.log(long_string_finder(array));
 // that are equally the longest
 
 // if string length = long string
-// store in hash with key name
-// specific to that string length
-
-// haven't learned hashes yet
-// so store in array
+// store in array
+// also store long string in array
 // iterate through
-// and print if string length
-// = long string length
+// and push to new array 
+// if string length = long string length
 
 
 var long_string_finder_two = function(array) {
@@ -71,3 +68,48 @@ var long_string_finder_two = function(array) {
 };
 
 console.log(long_string_finder_two(array));
+
+//////////
+
+// takes two objects
+// checks if objects share 
+// at least one key-value pair
+
+// select first key-value pair
+// of object one
+// iterate through key-value pairs
+// of object two
+// if match
+// return true
+// select subsequent key-value pair
+// of object one
+// and repeat until
+// no more key-value pairs 
+// or match
+
+var steven = {name: "steven", age: 54, haircut: "mop"};
+var tamir = {name: "tamir", age: 54, haircut: "yes"};
+var wild_bill = {name: "wild bill", age: 63, haircut: "bowl cut"}
+var jessie = {name: "jessie", age: 27, haircut: "bowl cut"}
+var elijah = {name: "elijah", age: 14, haircut: "bald"}
+
+// for/in loop
+// loops through properties in an object
+
+var match_key_value_pair = function(object_one, object_two) {
+  for (var key_of_one in object_one) {
+    for (var key_of_two in object_two) {
+      // console.log(key_of_one + ": " + object_one[key_of_one]);          // print to see
+      // console.log(key_of_two + ": " + object_two[key_of_two]);
+      if ((key_of_one + ": " + object_one[key_of_one]) == (key_of_two + ": " + object_two[key_of_two])) {
+      return true;
+      }
+    } 
+  }  return false;
+};
+
+console.log(match_key_value_pair(steven, tamir));
+console.log(match_key_value_pair(elijah, wild_bill));
+console.log(match_key_value_pair(jessie, wild_bill));
+
+
