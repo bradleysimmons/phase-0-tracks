@@ -46,7 +46,7 @@ var long_string_finder_two = function(array) {
 
   var equal_string = []
 
-  for (var i = 0; i < array.length; i++) {
+  for (var i = 2; i < array.length; i++) {
     if (array[i].length > long_string.length) {
       long_string = array[i];
     } else if (array[i].length == long_string.length) {
@@ -140,12 +140,11 @@ console.log(match_key_value_pair(jessie, wild_bill));
 // repeat
 
 
-word_array = [];
 var alphabet_string = "abcdefghijklmnopqrstuvqxyz";
 
-var random_string_generator = function(input) {
-   
-    for (var i = 0; i < input; i++) {
+var random_string_generator = function(integer) {
+  word_array = [];
+    for (var i = 0; i < integer; i++) {
       var string = "";
       var integer_one = get_random_integer(1, 11);
       for (var i_2 = 0; i_2 < integer_one; i_2++) {
@@ -164,21 +163,17 @@ var get_random_integer = function(min, max) {
    return Math.floor(Math.random() * (max - min)) + min;
 };
   
+console.log(long_string_finder_two(random_string_generator(11)));
+console.log(long_string_finder_two(random_string_generator(2)));
+console.log(long_string_finder_two(random_string_generator(3)));
+console.log(long_string_finder_two(random_string_generator(4)));
+console.log(long_string_finder_two(random_string_generator(5)));
+console.log(long_string_finder_two(random_string_generator(6)));
+console.log(long_string_finder_two(random_string_generator(7)));
+console.log(long_string_finder_two(random_string_generator(8)));
+console.log(long_string_finder_two(random_string_generator(9)));
+console.log(long_string_finder_two(random_string_generator(10)));
 
-random_string_generator(10);
-
-// long string finder breaks 
-// if only one string in array
-
-// also breaks if longest word
-// is at index 1
-
-
-
-
-
-
-
-
+// one string array breaks long string finder
 
 
