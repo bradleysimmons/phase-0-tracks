@@ -140,37 +140,40 @@ console.log(match_key_value_pair(jessie, wild_bill));
 // repeat
 
 
-word_array = []
+word_array = [];
+var alphabet_string = "abcdefghijklmnopqrstuvqxyz";
 
-var random_string_generator = function(integer) {
-  for (var i = 0; i < integer; i++) {
-    
-    var alphabet_string = "abcdefghijklmnopqrstuvqxyz"; 
-    var string = "";
-    var integer_one = get_random_integer(1, 11);
-
-    for (var i = 0; i < integer_one; i++) {
-      var integer_two = get_random_integer(0, 26);
-      string += alphabet_string[integer_two];
-    };
-    
-    word_array.push(string);
-  
-  } console.log(word_array)
-  return word_array
+var random_string_generator = function(input) {
+   
+    for (var i = 0; i < input; i++) {
+      var string = "";
+      var integer_one = get_random_integer(1, 11);
+      for (var i_2 = 0; i_2 < integer_one; i_2++) {
+        var integer_two = get_random_integer(0, 26);
+        string += alphabet_string[integer_two];
+      }
+      word_array.push(string);
+    } 
+  console.log(word_array);
+  return word_array;
 };
 
-function get_random_integer(min, max) {
+var get_random_integer = function(min, max) {
    min = Math.ceil(min);
    max = Math.floor(max);
    return Math.floor(Math.random() * (max - min)) + min;
 };
   
 
-console.log(long_string_finder_two(random_string_generator(10)));
+random_string_generator(10);
 
 // long string finder breaks 
 // if only one string in array
+
+// also breaks if longest word
+// is at index 1
+
+
 
 
 
