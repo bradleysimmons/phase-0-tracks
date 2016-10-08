@@ -25,13 +25,16 @@ for (var i = 0; i < array.length; i++) {
 
 ////////// driver code
 
-console.log(long_string_finder(array));
+// console.log(long_string_finder(array));
 
 //////////
 
 // first version is okay
 // but does not handle multiple strings
 // that are equally the longest
+
+// also can establish index 0
+// as long string and skip comparison
 
 // if string length = long string
 // store in array
@@ -42,17 +45,10 @@ console.log(long_string_finder(array));
 
 
 var long_string_finder_two = function(array) {
-  if (array.length = 1) {
-    var long_string = array[0];
-  } else if (array[0].length > array[1].length) {
-      var long_string = array[0];
-    } else {
-      var long_string = array[1];
-      }
-
+  var long_string = array[0]
   var equal_string = []
 
-  for (var i = 2; i < array.length; i++) {
+  for (var i = 1; i < array.length; i++) {
     if (array[i].length > long_string.length) {
       long_string = array[i];
     } else if (array[i].length == long_string.length) {
@@ -75,7 +71,7 @@ var long_string_finder_two = function(array) {
 
 ////////// driver code
 
-console.log(long_string_finder_two(array));
+// console.log(long_string_finder_two(array));
 
 //////////
 
@@ -118,9 +114,9 @@ var match_key_value_pair = function(object_one, object_two) {
 
 ////////// driver code
 
-console.log(match_key_value_pair(steven, tamir));
-console.log(match_key_value_pair(elijah, wild_bill));
-console.log(match_key_value_pair(jessie, wild_bill));
+// console.log(match_key_value_pair(steven, tamir));
+// console.log(match_key_value_pair(elijah, wild_bill));
+// console.log(match_key_value_pair(jessie, wild_bill));
 
 
 //////////
@@ -174,17 +170,17 @@ var random_string_generator = function(integer) {
 
 ////////// driver code
 
-console.log(long_string_finder_two(random_string_generator(1)));
-console.log(long_string_finder_two(random_string_generator(1)));
-console.log(long_string_finder_two(random_string_generator(1)));
-console.log(long_string_finder_two(random_string_generator(1)));
-console.log(long_string_finder_two(random_string_generator(1)));
-console.log(long_string_finder_two(random_string_generator(2)));
-console.log(long_string_finder_two(random_string_generator(2)));
-console.log(long_string_finder_two(random_string_generator(2)));
-console.log(long_string_finder_two(random_string_generator(2)));
-console.log(long_string_finder_two(random_string_generator(2)));
+console.log(long_string_finder_two(random_string_generator(4)));
+// console.log(long_string_finder_two(random_string_generator(1)));
+// console.log(long_string_finder_two(random_string_generator(1)));
+// console.log(long_string_finder_two(random_string_generator(1)));
+// console.log(long_string_finder_two(random_string_generator(1)));
+// console.log(long_string_finder_two(random_string_generator(2)));
+// console.log(long_string_finder_two(random_string_generator(2)));
+// console.log(long_string_finder_two(random_string_generator(2)));
+// console.log(long_string_finder_two(random_string_generator(2)));
+// console.log(long_string_finder_two(random_string_generator(2)));
 
-// one string array breaks long string finder
+
 
 
