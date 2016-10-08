@@ -113,3 +113,69 @@ console.log(match_key_value_pair(elijah, wild_bill));
 console.log(match_key_value_pair(jessie, wild_bill));
 
 
+//////////
+
+// takes integer
+// for amount of strings
+// to put in an array
+// words should be random varying length
+// between zero and eleven letters
+
+// driver code 
+// does following ten times:
+// generates array
+// prints array
+// feeds array to longest word function
+// prints result
+
+// psuedocode:
+// determine length of word
+// by generating 1-10 random
+// determine index number
+// for each character
+// by generating 1-26 random
+// assign letter
+// using alphabet string
+// push word into array
+// repeat
+
+
+word_array = []
+
+var random_string_generator = function(integer) {
+  for (var i = 0; i < integer; i++) {
+    
+    var alphabet_string = "abcdefghijklmnopqrstuvqxyz"; 
+    var string = "";
+    var integer_one = get_random_integer(1, 11);
+
+    for (var i = 0; i < integer_one; i++) {
+      var integer_two = get_random_integer(0, 26);
+      string += alphabet_string[integer_two];
+    };
+    
+    word_array.push(string);
+  
+  } console.log(word_array)
+  return word_array
+};
+
+function get_random_integer(min, max) {
+   min = Math.ceil(min);
+   max = Math.floor(max);
+   return Math.floor(Math.random() * (max - min)) + min;
+};
+  
+
+console.log(long_string_finder_two(random_string_generator(10)));
+
+// long string finder breaks 
+// if only one string in array
+
+
+
+
+
+
+
+
