@@ -23,7 +23,11 @@ for (var i = 0; i < array.length; i++) {
 } return long_string;
 }
 
+////////// driver code
+
 console.log(long_string_finder(array));
+
+//////////
 
 // first version is okay
 // but does not handle multiple strings
@@ -67,6 +71,8 @@ var long_string_finder_two = function(array) {
 
 };
 
+////////// driver code
+
 console.log(long_string_finder_two(array));
 
 //////////
@@ -108,6 +114,8 @@ var match_key_value_pair = function(object_one, object_two) {
   }  return false;
 };
 
+////////// driver code
+
 console.log(match_key_value_pair(steven, tamir));
 console.log(match_key_value_pair(elijah, wild_bill));
 console.log(match_key_value_pair(jessie, wild_bill));
@@ -139,6 +147,11 @@ console.log(match_key_value_pair(jessie, wild_bill));
 // push word into array
 // repeat
 
+var get_random_integer = function(min, max) {
+   min = Math.ceil(min);
+   max = Math.floor(max);
+   return Math.floor(Math.random() * (max - min)) + min;
+};
 
 var alphabet_string = "abcdefghijklmnopqrstuvqxyz";
 
@@ -157,12 +170,8 @@ var random_string_generator = function(integer) {
   return word_array;
 };
 
-var get_random_integer = function(min, max) {
-   min = Math.ceil(min);
-   max = Math.floor(max);
-   return Math.floor(Math.random() * (max - min)) + min;
-};
-  
+////////// driver code
+
 console.log(long_string_finder_two(random_string_generator(11)));
 console.log(long_string_finder_two(random_string_generator(2)));
 console.log(long_string_finder_two(random_string_generator(3)));
