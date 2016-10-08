@@ -42,11 +42,13 @@ console.log(long_string_finder(array));
 
 
 var long_string_finder_two = function(array) {
-  if (array[0].length > array[1].length) {
+  if (array.length = 1) {
+    var long_string = array[0];
+  } else if (array[0].length > array[1].length) {
       var long_string = array[0];
-  } else {
+    } else {
       var long_string = array[1];
-    }
+      }
 
   var equal_string = []
 
@@ -172,16 +174,16 @@ var random_string_generator = function(integer) {
 
 ////////// driver code
 
-console.log(long_string_finder_two(random_string_generator(11)));
+console.log(long_string_finder_two(random_string_generator(1)));
+console.log(long_string_finder_two(random_string_generator(1)));
+console.log(long_string_finder_two(random_string_generator(1)));
+console.log(long_string_finder_two(random_string_generator(1)));
+console.log(long_string_finder_two(random_string_generator(1)));
 console.log(long_string_finder_two(random_string_generator(2)));
-console.log(long_string_finder_two(random_string_generator(3)));
-console.log(long_string_finder_two(random_string_generator(4)));
-console.log(long_string_finder_two(random_string_generator(5)));
-console.log(long_string_finder_two(random_string_generator(6)));
-console.log(long_string_finder_two(random_string_generator(7)));
-console.log(long_string_finder_two(random_string_generator(8)));
-console.log(long_string_finder_two(random_string_generator(9)));
-console.log(long_string_finder_two(random_string_generator(10)));
+console.log(long_string_finder_two(random_string_generator(2)));
+console.log(long_string_finder_two(random_string_generator(2)));
+console.log(long_string_finder_two(random_string_generator(2)));
+console.log(long_string_finder_two(random_string_generator(2)));
 
 // one string array breaks long string finder
 
