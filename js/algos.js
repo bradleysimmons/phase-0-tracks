@@ -25,7 +25,7 @@ var array = ["ear", "blues", "fish", "prison", "planet", "eleven"];
 
 var long_string_finder = function(array) {
   var long_string = array[0]
-  var equal_string = []
+  var longest_strings = []
 
   for (var i = 1; i < array.length; i++) {
     if (array[i].length > long_string.length) {
@@ -44,114 +44,109 @@ console.log(long_string_finder(array));
 
 //////////
 
-// // takes two objects
-// // checks if objects share 
-// // at least one key-value pair
+// takes two objects
+// checks if objects share 
+// at least one key-value pair
 
-// // select first key-value pair
-// // of object one
-// // iterate through key-value pairs
-// // of object two
-// // if match
-// // return true
-// // select subsequent key-value pair
-// // of object one
-// // and repeat until
-// // no more key-value pairs 
-// // or match
+// select first key-value pair
+// of object one
+// iterate through key-value pairs
+// of object two
+// if match
+// return true
+// select subsequent key-value pair
+// of object one
+// and repeat until
+// no more key-value pairs 
+// or match
 
-// var steven = {name: "steven", age: 54, haircut: "mop"};
-// var tamir = {name: "tamir", age: 54, haircut: "yes"};
-// var wild_bill = {name: "wild bill", age: 63, haircut: "bowl cut"}
-// var jessie = {name: "jessie", age: 27, haircut: "bowl cut"}
-// var elijah = {name: "elijah", age: 14, haircut: "bald"}
+var steven = {name: "steven", age: 54, haircut: "mop"};
+var tamir = {name: "tamir", age: 54, haircut: "shag"};
+var bill = {name: "bill", age: 63, haircut: "bowl cut"}
+var jessie = {name: "jessie", age: 27, haircut: "bowl cut"}
+var elijah = {name: "elijah", age: 14, haircut: "bald"}
 
-// // for/in loop
-// // loops through properties in an object
+// for/in loop
+// loops through properties in an object
 
-// var match_key_value_pair = function(object_one, object_two) {
-//   for (var key_of_one in object_one) {
-//     for (var key_of_two in object_two) {
-//       // console.log(key_of_one + ": " + object_one[key_of_one]);          // print to see
-//       // console.log(key_of_two + ": " + object_two[key_of_two]);
-//       if ((key_of_one + ": " + object_one[key_of_one]) == (key_of_two + ": " + object_two[key_of_two])) {
-//       return true;
-//       }
-//     } 
-//   }  return false;
-// };
+var match_key_value_pair = function(object_one, object_two) {
+  for (var key_of_one in object_one) {
+    for (var key_of_two in object_two) {
+      if ((key_of_one == key_of_two) && 
+        (object_one[key_of_one] == object_two[key_of_two])) {
+        return true;
+      }
+    } 
+  }  return false;
+};
 
-// ////////// driver code
+////////// driver code
 
-// // console.log(match_key_value_pair(steven, tamir));
-// // console.log(match_key_value_pair(elijah, wild_bill));
-// // console.log(match_key_value_pair(jessie, wild_bill));
+console.log(match_key_value_pair(steven, tamir));
+console.log(match_key_value_pair(elijah, bill));
+console.log(match_key_value_pair(jessie, bill));
 
 
-// //////////
+//////////
 
-// // takes integer
-// // for amount of strings
-// // to put in an array
-// // words should be random varying length
-// // between zero and eleven letters
+// takes integer
+// for amount of strings
+// to put in an array
+// words should be random varying length
+// between zero and eleven letters
 
-// // driver code 
-// // does following ten times:
-// // generates array
-// // prints array
-// // feeds array to longest word function
-// // prints result
+// driver code 
+// does following ten times:
+// generates array
+// prints array
+// feeds array to longest word function
+// prints result
 
-// // psuedocode:
-// // determine length of word
-// // by generating 1-10 random
-// // determine index number
-// // for each character
-// // by generating 1-26 random
-// // assign letter
-// // using alphabet string
-// // push word into array
-// // repeat
+// psuedocode:
+// determine length of word
+// by generating 1-10 random
+// determine index number
+// for each character
+// by generating 1-26 random
+// assign letter
+// using alphabet string
+// push word into array
+// repeat
 
-// var get_random_integer = function(min, max) {
-//    min = Math.ceil(min);
-//    max = Math.floor(max);
-//    return Math.floor(Math.random() * (max - min)) + min;
-// };
+var get_random_integer = function(min, max) {
+   min = Math.ceil(min);
+   max = Math.floor(max);
+   return Math.floor(Math.random() * (max - min)) + min;
+};
 
-// var alphabet_string = "abcdefghijklmnopqrstuvqxyz";
+var alphabet_string = "abcdefghijklmnopqrstuvqxyz";
 
-// var random_string_generator = function(integer) {
-//   word_array = [];
-//     for (var i = 0; i < integer; i++) {
-//       var string = "";
-//       var integer_one = get_random_integer(1, 11);
-//       for (var i_2 = 0; i_2 < integer_one; i_2++) {
-//         var integer_two = get_random_integer(0, 26);
-//         string += alphabet_string[integer_two];
-//       }
-//       word_array.push(string);
-//     } 
+var random_string_generator = function(integer) {
+  word_array = [];
+    for (var i = 0; i < integer; i++) {
+      var string = "";
+      var integer_one = get_random_integer(1, 11);
+      for (var i_2 = 0; i_2 < integer_one; i_2++) {
+        var integer_two = get_random_integer(0, 26);
+        string += alphabet_string[integer_two];
+      }
+      word_array.push(string);
+    }
+     return word_array;
+};
 
-//   console.log("\n");
-//   console.log("returned " + word_array.length + " strings: ");  
-//   console.log(word_array);
-//   return word_array;
-// };
+////////// driver code
 
-// ////////// driver code
-
-// long_string_finder(random_string_generator(10));
-// long_string_finder(random_string_generator(6));
-// long_string_finder(random_string_generator(3));
-// long_string_finder(random_string_generator(2));
-// long_string_finder(random_string_generator(1));
-// long_string_finder(random_string_generator(9));
-// long_string_finder(random_string_generator(6));
-// long_string_finder(random_string_generator(4));
-// long_string_finder(random_string_generator(11));
-// long_string_finder(random_string_generator(20));
+console.log(long_string_finder(random_string_generator(10)));
+long_string_finder(random_string_generator(6));
+long_string_finder(random_string_generator(3));
+long_string_finder(random_string_generator(2));
+long_string_finder(random_string_generator(1));
+long_string_finder(random_string_generator(9));
+long_string_finder(random_string_generator(6));
+long_string_finder(random_string_generator(4));
+long_string_finder(random_string_generator(11));
+long_string_finder(random_string_generator(20));
 
 
 // console.log("\n");
@@ -164,6 +159,12 @@ console.log(long_string_finder(array));
 //     };
 
 //   console.log(longest_strings);
+
+
+//   console.log("\n");
+//   console.log("returned " + word_array.length + " strings: ");  
+//   console.log(word_array);
+//   return word_array;
 
 
 
