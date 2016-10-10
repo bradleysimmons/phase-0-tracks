@@ -1,33 +1,25 @@
 // takes an array of strings 
 // returns longest string in array
+// and strings of equal length
 
-// establish initial longest string variable
+// initialize long string variable
+// initialize longest strings variable
+
 // compare each subsequent string to long string
-// if string is longer than long string
+// if current string is longer than long string
 // re-assign long string variable with new value
-// return long string
+// clear out longest strings array
+// push new longest string into longest strings array
 
-var array = ["ear", "blues", "fish", "prison", "planet", "eleven"];
-
-// handle multiple strings
-// that are equally the longest
-
-// establish index 0
-// as long string
-
-// if string length = long string
-// store in array
-// also store long string in array
-// iterate through
-// and push to new array 
-// if string length = long string length
+// if current string length = long string
+// push into longest strings array
 
 
 var long_string_finder = function(array) {
-  var long_string = array[0]
+  var long_string = ""
   var longest_strings = []
 
-  for (var i = 1; i < array.length; i++) {
+  for (var i = 0; i < array.length; i++) {
     if (array[i].length > long_string.length) {
       long_string = array[i];
       longest_strings = [];
@@ -39,6 +31,8 @@ var long_string_finder = function(array) {
 };
 
 ////////// driver code
+
+var array = ["ear", "blues", "fish", "prison", "planet", "eleven"];
 
 console.log(long_string_finder(array));
 
@@ -60,15 +54,6 @@ console.log(long_string_finder(array));
 // no more key-value pairs 
 // or match
 
-var steven = {name: "steven", age: 54, haircut: "mop"};
-var tamir = {name: "tamir", age: 54, haircut: "shag"};
-var bill = {name: "bill", age: 63, haircut: "bowl cut"}
-var jessie = {name: "jessie", age: 27, haircut: "bowl cut"}
-var elijah = {name: "elijah", age: 14, haircut: "bald"}
-
-// for/in loop
-// loops through properties in an object
-
 var match_key_value_pair = function(object_one, object_two) {
   for (var key_of_one in object_one) {
     for (var key_of_two in object_two) {
@@ -82,9 +67,15 @@ var match_key_value_pair = function(object_one, object_two) {
 
 ////////// driver code
 
+var steven = {name: "steven", age: 54, haircut: "mop"};
+var tamir = {name: "tamir", age: 54, haircut: "shag"};
+var leslie = {name: "leslie", age: 63, haircut: "bowl cut"};
+var jessie = {name: "jessie", age: 27, haircut: "bowl cut"};
+var elijah = {name: "elijah", age: 14, haircut: "bald"};
+
 console.log(match_key_value_pair(steven, tamir));
-console.log(match_key_value_pair(elijah, bill));
-console.log(match_key_value_pair(jessie, bill));
+console.log(match_key_value_pair(elijah, leslie));
+console.log(match_key_value_pair(jessie, leslie));
 
 
 //////////
@@ -92,25 +83,15 @@ console.log(match_key_value_pair(jessie, bill));
 // takes integer
 // for amount of strings
 // to put in an array
-// words should be random varying length
-// between zero and eleven letters
+// strings should be random varying length
+// between zero and eleven characters
 
-// driver code 
-// does following ten times:
-// generates array
-// prints array
-// feeds array to longest word function
-// prints result
-
-// psuedocode:
-// determine length of word
-// by generating 1-10 random
-// determine index number
-// for each character
-// by generating 1-26 random
-// assign letter
-// using alphabet string
-// push word into array
+// determine length of string
+// by generating a random number, 1-10 
+// determine index number for each character
+// by generating random number, 1-26 
+// assign letter using alphabet string
+// push string into array
 // repeat
 
 var get_random_integer = function(min, max) {
@@ -137,35 +118,16 @@ var random_string_generator = function(integer) {
 
 ////////// driver code
 
-console.log(long_string_finder(random_string_generator(10)));
-long_string_finder(random_string_generator(6));
-long_string_finder(random_string_generator(3));
-long_string_finder(random_string_generator(2));
-long_string_finder(random_string_generator(1));
-long_string_finder(random_string_generator(9));
-long_string_finder(random_string_generator(6));
-long_string_finder(random_string_generator(4));
-long_string_finder(random_string_generator(11));
-long_string_finder(random_string_generator(20));
+// does following ten times:
+// generates array
+// prints array
+// feeds array to longest word function
+// prints result
 
-
-// console.log("\n");
-//   console.log("maximum string length: " + long_string.length);
-  
-//   if (longest_strings.length == 1) {
-//     console.log(longest_strings.length + " occurrence:");
-//   } else if (longest_strings.length > 1) {
-//     console.log(longest_strings.length + " occurrences:");
-//     };
-
-//   console.log(longest_strings);
-
-
-//   console.log("\n");
-//   console.log("returned " + word_array.length + " strings: ");  
-//   console.log(word_array);
-//   return word_array;
-
-
+for (var i = 0; i < 10; i++) {
+  var random_array = random_string_generator(get_random_integer(1, 21));
+  console.log(random_array);
+  console.log(long_string_finder(random_array));
+}
 
 
