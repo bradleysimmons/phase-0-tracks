@@ -70,3 +70,31 @@ makes sense).
     
     -output
         sqlite>
+
+* try a few different joins in your database, and record the commands and the output in
+    -command
+        SELECT paintings.id, paintings.name, location_painted.location FROM paintings LEFT JOIN location_painted ON paintings.location_painted = location_painted.id;
+    
+    -output
+        1|maria in a wedding dress|nyc
+        2|self portrait|nyc
+        3|james|nyc
+        4|madison|nyc
+        5|molly|nyc
+        6|purple coneflower|champaign
+        7|prairie by homer lake|champaign
+        8|diana in her room|fresno area
+        9|on sky harbor road|fresno area
+        10|roadside weed/flower|fresno area
+        11|owen’s mountain|fresno area
+        12|high in the california woods|pioneer, ca
+
+    -command
+        SELECT paintings.id, paintings.name, location_painted.location FROM paintings RIGHT JOIN location_painted ON paintings.location_painted = location_painted.id;
+
+    -output
+        Error: RIGHT and FULL OUTER JOINs are not currently supported
+        sqlite> 
+
+I am aware of different options for join, but I think that the tables I created don't provide any opportunities for good uses.
+
