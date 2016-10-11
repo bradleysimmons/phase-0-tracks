@@ -1,0 +1,100 @@
+* display the information in one table (either table is fine).
+    -command
+        sqlite> SELECT * FROM paintings;
+
+    -output
+        1|maria in a wedding dress|30 x 24|15|1|true
+        2|self portrait|19 x 21|14|1|true
+        3|james|17 x 19|14|1|false
+        4|madison|29 x 27|15|1|false
+        5|molly|23 x 21|15|1|true
+        6|purple coneflower|13 x 15|15|2|true
+        7|prairie by homer lake|26 x 28|15|2|false
+        8|diana in her room|37 x 45|16|3|false
+        9|on sky harbor road|29 x 27|16|3|false
+        10|roadside weed/flower|37 x 43|16|3|false
+        11|owen’s mountain|21 x 24|16|3|false
+        12|high in the california woods|13 x 15|15|4|false
+        13|in the sand dunes at death valley|18 x 22|16|5|false
+
+* update an item that meets some condition (you can choose a condition that makes sense).
+    -command
+        sqlite> UPDATE paintings SET sold="true" WHERE sold="false";
+    
+    -output
+        sqlite>
+
+* display the information in both tables using one query.
+    -command
+        sqlite> SELECT paintings.id, paintings.name, paintings.dimensions, paintings.date_painted, location_painted.location, paintings.sold FROM paintings JOIN location_painted ON paintings.location_painted = location_painted.id;
+    
+    -output
+        1|maria in a wedding dress|30 x 24|15|nyc|true
+        2|self portrait|19 x 21|14|nyc|true
+        3|james|17 x 19|14|nyc|true
+        4|madison|29 x 27|15|nyc|true
+        5|molly|23 x 21|15|nyc|true
+        6|purple coneflower|13 x 15|15|champaign|true
+        7|prairie by homer lake|26 x 28|15|champaign|true
+        8|diana in her room|37 x 45|16|fresno area|true
+        9|on sky harbor road|29 x 27|16|fresno area|true
+        10|roadside weed/flower|37 x 43|16|fresno area|true
+        11|owen’s mountain|21 x 24|16|fresno area|true
+        12|high in the california woods|13 x 15|15|pioneer, ca|true
+        13|in the sand dunes at death valley|18 x 22|16|death valley|true
+        
+
+* display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+    -command
+        SELECT paintings.id, paintings.name, location_painted.location FROM paintings JOIN location_painted ON paintings.location_painted = location_painted.id;
+    
+    -output
+        1|maria in a wedding dress|nyc
+        2|self portrait|nyc
+        3|james|nyc
+        4|madison|nyc
+        5|molly|nyc
+        6|purple coneflower|champaign
+        7|prairie by homer lake|champaign
+        8|diana in her room|fresno area
+        9|on sky harbor road|fresno area
+        10|roadside weed/flower|fresno area
+        11|owen’s mountain|fresno area
+        12|high in the california woods|pioneer, ca
+        13|in the sand dunes at death valley|death valley
+
+* delete an item that meets some condition (you can choose a condition that 
+makes sense).
+    -command
+        DELETE FROM paintings WHERE location_painted=5;
+    
+    -output
+        sqlite>
+
+* try a few different joins in your database, and record the commands and the output in
+    -command
+        SELECT paintings.id, paintings.name, location_painted.location FROM paintings LEFT JOIN location_painted ON paintings.location_painted = location_painted.id;
+    
+    -output
+        1|maria in a wedding dress|nyc
+        2|self portrait|nyc
+        3|james|nyc
+        4|madison|nyc
+        5|molly|nyc
+        6|purple coneflower|champaign
+        7|prairie by homer lake|champaign
+        8|diana in her room|fresno area
+        9|on sky harbor road|fresno area
+        10|roadside weed/flower|fresno area
+        11|owen’s mountain|fresno area
+        12|high in the california woods|pioneer, ca
+
+    -command
+        SELECT paintings.id, paintings.name, location_painted.location FROM paintings RIGHT JOIN location_painted ON paintings.location_painted = location_painted.id;
+
+    -output
+        Error: RIGHT and FULL OUTER JOINs are not currently supported
+        sqlite> 
+
+I am aware of different options for join, but I think that the tables I created don't provide any opportunities for good uses.
+
