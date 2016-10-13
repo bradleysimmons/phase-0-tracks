@@ -24,3 +24,11 @@ XX
 
 db.execute(create_table_command)
 
+def create_media_item(db, name, height, width)
+  db.execute("INSERT INTO media_table (name, height, width) VALUES (?, ?, ?)", [name, height, width])
+end
+
+########## driver code
+
+
+
