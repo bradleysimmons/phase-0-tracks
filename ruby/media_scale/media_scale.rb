@@ -30,5 +30,27 @@ end
 
 ########## driver code
 
+until
+  puts "enter q to quit at any time"
+  puts "enter media name:"
+  name = gets.chomp
+    if name == "q"
+      break
+    end
+  puts "enter height"
+  height = gets.chomp
+    if height == "q"
+      break
+    end
+  puts "enter width"
+  width = gets.chomp
+    if width == "q"
+      break
+    end
+  create_media_item(db, name, height, width)
+end
 
+media = db.execute("SELECT * FROM media_table")
+puts media.class
+p media
 
