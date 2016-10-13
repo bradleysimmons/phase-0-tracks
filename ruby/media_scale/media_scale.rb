@@ -18,26 +18,24 @@ create_table_command = <<-XX
     id INTEGER PRIMARY KEY,
     name VARCHAR(255),
     height INT,
-    width INT
+    width INT,
+    area INT,
+    aspect_ratio INT
   )
 XX
 
 db.execute(create_table_command)
 
-def create_media_item(db, name, height, width)
-  db.execute("INSERT INTO media_table (name, height, width) VALUES (?, ?, ?)", [name, height, width])
+def create_media_item(db, name, height, width, area, aspect_ratio)
+  db.execute("INSERT INTO media_table (name, height, width, area, aspect_ratio) VALUES (?, ?, ?, ?, ?)", [name, height, width, area, aspect_ratio])
 end
 
-def calculate_item_area(media)
-  media.each do |array|
-    p array[2] * array[3]
-  end
+def calculate_item_area(height, width)
+  height * width
 end
 
-def calculate_item_aspect_ratio(media)
-  media.each do |array|
-    p array[2].to_f / array[3].to_f
-  end
+def calculate_item_aspect_ratio(height, width)
+  height.to_f / width.to_f
 end
 
 ########## driver code
@@ -50,20 +48,21 @@ until
       break
     end
   puts "enter height"
-  height = gets.chomp
+  height = gets.chomp.to_i
     if height == "q"
       break
     end
   puts "enter width"
-  width = gets.chomp
+  width = gets.chomp.to_i
     if width == "q"
       break
     end
-  create_media_item(db, name, height, width)
+  area = calculate_item_area(height, width)
+  aspect_ratio = calculate_item_aspect_ratio(height, width)
+  create_media_item(db, name, height, width, area, aspect_ratio)
 end
 
 media = db.execute("SELECT * FROM media_table")
 
-calculate_item_area(media)
-calculate_item_aspect_ratio(media)
+p media
 
