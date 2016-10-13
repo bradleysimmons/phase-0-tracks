@@ -28,6 +28,12 @@ def create_media_item(db, name, height, width)
   db.execute("INSERT INTO media_table (name, height, width) VALUES (?, ?, ?)", [name, height, width])
 end
 
+def calculate_item_area(media)
+  media.each do |array|
+    array[2] * array[3]
+  end
+end
+
 ########## driver code
 
 until
@@ -51,6 +57,6 @@ until
 end
 
 media = db.execute("SELECT * FROM media_table")
-puts media.class
-p media
+
+calculate_item_area(media)
 
