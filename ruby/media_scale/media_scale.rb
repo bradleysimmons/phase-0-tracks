@@ -11,5 +11,16 @@
 
 require "sqlite3"
 
-db = SQLite3::Database.new("paintings.db")
+db = SQLite3::Database.new("media.db")
+
+create_table_command = <<-XX
+  CREATE TABLE IF NOT EXISTS media_table(
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    height INT,
+    width INT
+  )
+XX
+
+db.execute(create_table_command)
 
