@@ -30,7 +30,13 @@ end
 
 def calculate_item_area(media)
   media.each do |array|
-    array[2] * array[3]
+    p array[2] * array[3]
+  end
+end
+
+def calculate_item_aspect_ratio(media)
+  media.each do |array|
+    p array[2].to_f / array[3].to_f
   end
 end
 
@@ -59,4 +65,5 @@ end
 media = db.execute("SELECT * FROM media_table")
 
 calculate_item_area(media)
+calculate_item_aspect_ratio(media)
 
