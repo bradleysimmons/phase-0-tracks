@@ -35,7 +35,8 @@ def calculate_item_area(height, width)
 end
 
 def calculate_item_aspect_ratio(height, width)
-  height.to_f / width.to_f
+  aspect = height.to_f / width.to_f
+  aspect = aspect.round(3)
 end
 
 ########## driver code
