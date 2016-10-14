@@ -40,16 +40,6 @@ def calculate_item_aspect_ratio(height, width)
   aspect = aspect.round(3)
 end
 
-def find_largest(media)
-  largest_item = [0, 0]
-  media.each_with_index do |item, index|
-    if item[4] > largest_item[1]
-      largest_item = [index + 1, item[4]]
-      p largest_item
-    end
-  end
-end
-
 ########## driver code
 
 until
@@ -74,7 +64,9 @@ until
   create_media_item(db, name, height, width, area, aspect_ratio)
 end
 
-media = db.execute("SELECT * FROM media_table")
+# media = db.execute("SELECT * FROM media_table")
 
-p find_largest(media)
+max_area = db.execute("SELECT id, MAX(area) FROM media_table")
+
+p max_area
 
