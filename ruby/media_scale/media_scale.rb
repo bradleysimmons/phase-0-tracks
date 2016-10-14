@@ -5,6 +5,7 @@
 
 # enter paintings and information into database
 # calculate surface area of tangible paintings using dimensions
+# calculate aspect ratio of tangible paintings
 # find greatest surface area of all entered paintings
 # collect user input for desired image size on web
 # return scaled dimensions for all paintings
@@ -39,6 +40,16 @@ def calculate_item_aspect_ratio(height, width)
   aspect = aspect.round(3)
 end
 
+def find_largest(media)
+  largest_item = [0, 0]
+  media.each_with_index do |item, index|
+    if item[4] > largest_item[1]
+      largest_item = [index + 1, item[4]]
+      p largest_item
+    end
+  end
+end
+
 ########## driver code
 
 until
@@ -65,5 +76,5 @@ end
 
 media = db.execute("SELECT * FROM media_table")
 
-p media
+p find_largest(media)
 
