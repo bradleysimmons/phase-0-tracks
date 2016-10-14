@@ -40,6 +40,11 @@ def calculate_item_aspect_ratio(height, width)
   aspect = aspect.round(3)
 end
 
+def return_proportionally(max_width)
+
+end
+
+
 ########## driver code
 
 until
@@ -64,9 +69,31 @@ until
   create_media_item(db, name, height, width, area, aspect_ratio)
 end
 
-# media = db.execute("SELECT * FROM media_table")
+media = db.execute("SELECT * FROM media_table")
 
-max_area = db.execute("SELECT id, MAX(area) FROM media_table")
+p media
 
-p max_area
+max_area = db.execute("SELECT name, MAX(area) FROM media_table")
+max_area = max_area.flatten
+
+p max_area_name = max_area[0]
+p max_area_value = max_area[1]
+
+puts "the largest media item in the database is \'#{max_area_name}\'"
+
+puts "enter desired width for largest item (in pixels):"
+max_width = gets.chomp.to_i
+
+paintings_list = db.execute("SELECT id, name FROM media_table")
+paintings_list.each do |painting|
+  p "#{painting[0]}: #{painting[1]}"
+end
+
+puts "enter id number of painting to return its proportional values:"
+id = gets.chomp
+
+painting_to_calculate = db.execute("SELECT height, width FROM media_table WHERE id=#{id}")
+painting_to_calculate = painting_to_calculate.flatten
+p painting_to_calculate
+
 
