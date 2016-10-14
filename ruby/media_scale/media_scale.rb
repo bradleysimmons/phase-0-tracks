@@ -10,6 +10,15 @@
 # collect user input for desired image size on web
 # return scaled dimensions for all paintings
 
+    ## pseudocode for scaled_width_calculator
+    # based on largest painting set to 100% at desired width
+    # takes desired_max_width, largest_width, width_to_scale
+    # returns => scaled_width = (w_t_s / l_w) d_m_w
+
+    ## pseudocode for scaled_height_calculator
+    # takes return from scaled_width_calculator, aspect_ratio
+    # returns => scaled_height = scaled_width (aspect_ratio)
+
 require "sqlite3"
 
 db = SQLite3::Database.new("media.db")
@@ -40,8 +49,12 @@ def calculate_item_aspect_ratio(height, width)
   aspect = aspect.round(3)
 end
 
-def return_proportionally(max_width)
+def scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
+  scaled_width = (width_to_scale / largest_width) * desired_max_width
+end
 
+def scaled_height_calculator(scaled_width_calculator_return, aspect_ratio)
+  scaled_height = scaled_width * aspect_ratio
 end
 
 
