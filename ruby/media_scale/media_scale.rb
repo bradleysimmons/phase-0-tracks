@@ -116,18 +116,27 @@ until
     max_area = max_area.flatten
     largest_width = max_area[0].to_f
     print_database(db)
-    puts "enter id of media item to scale:"
+    puts "enter id of media item to scale (or 0 to scale all):"
     id_to_scale = gets.chomp
-    id_to_scale_query = db.execute("SELECT width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
-    id_to_scale_query = id_to_scale_query.flatten
-    width_to_scale = id_to_scale_query[0]
-    aspect_ratio = id_to_scale_query[1]
+      if id_to_scale == "0"
+        id_to_scale_query = db.execute("SELECT name, width, aspect_ratio FROM media_table")
+      else
+        id_to_scale_query = db.execute("SELECT name, width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
+      end
     puts "enter desired width of largest media item:"
     desired_max_width = gets.chomp.to_f
-    scaled_width = scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
-    scaled_height = scaled_height_calculator(scaled_width, aspect_ratio)
-    puts "scaled height: #{scaled_height}"
-    puts "scaled width: #{scaled_width}"
+
+      id_to_scale_query.each do |array|
+        name = array[0]
+        width_to_scale = array[1]
+        aspect_ratio = array[2]
+        scaled_width = scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
+        scaled_height = scaled_height_calculator(scaled_width, aspect_ratio)
+        puts "\n"
+        puts "media name: #{name}"
+        puts "scaled height: #{scaled_height}; scaled width: #{scaled_width}"
+      end
+
   end
 
   if option == "4"
