@@ -63,90 +63,75 @@ def print_database(database)
 end
 
 def scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
-  (width_to_scale / largest_width) * desired_max_width
+  ((width_to_scale / largest_width) * desired_max_width).round(3)
 end
 
 def scaled_height_calculator(scaled_width, aspect_ratio)
-  scaled_width * aspect_ratio
+  (scaled_width * aspect_ratio).round(3)
 end
 
 ########## driver code
 
 puts "########## media scale"
-puts "\n"
-puts "select option:"
-puts "1: input media to database"
-puts "2: remove media from database"
-puts "3: view database"
-puts "4: calculate scaled dimensions"
-puts "5: exit"
-option = gets.chomp
 
-if option == "1"
-  until
-    puts "enter media name (or \"q\" to quit):"
-    name = gets.chomp
-      if name == "q"
-        break
-      end
-    puts "enter height"
-    height = gets.chomp.to_i
-      if height == "q"
-        break
-      end
-    puts "enter width"
-    width = gets.chomp.to_i
-      if width == "q"
-        break
-      end
-    area = calculate_item_area(height, width)
-    aspect_ratio = calculate_item_aspect_ratio(height, width)
-    create_media_item(db, name, height, width, area, aspect_ratio)
+until
+
+  puts "\n"
+  puts "select option:"
+  puts "1: input media to database"
+  puts "2: view database"
+  puts "3: calculate scaled dimensions"
+  puts "4: exit"
+  option = gets.chomp
+
+  if option == "1"
+    until
+      puts "enter media name (or \"q\" to quit):"
+      name = gets.chomp
+        if name == "q"
+          break
+        end
+      puts "enter height"
+      height = gets.chomp.to_i
+        if height == "q"
+          break
+        end
+      puts "enter width"
+      width = gets.chomp.to_i
+        if width == "q"
+          break
+        end
+      area = calculate_item_area(height, width)
+      aspect_ratio = calculate_item_aspect_ratio(height, width)
+      create_media_item(db, name, height, width, area, aspect_ratio)
+    end
   end
+
+  if option == "2"
+    print_database(db)
+  end
+
+  if option == "3"
+    max_area = db.execute("SELECT width, MAX(area) FROM media_table")
+    max_area = max_area.flatten
+    largest_width = max_area[0].to_f
+    print_database(db)
+    puts "enter id of media item to scale:"
+    id_to_scale = gets.chomp
+    id_to_scale_query = db.execute("SELECT width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
+    id_to_scale_query = id_to_scale_query.flatten
+    width_to_scale = id_to_scale_query[0]
+    aspect_ratio = id_to_scale_query[1]
+    puts "enter desired width of largest media item:"
+    desired_max_width = gets.chomp.to_f
+    scaled_width = scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
+    scaled_height = scaled_height_calculator(scaled_width, aspect_ratio)
+    puts "scaled height: #{scaled_height}"
+    puts "scaled width: #{scaled_width}"
+  end
+
+  if option == "4"
+    break
+  end
+
 end
-
-if option == "3"
-  print_database(db)
-end
-
-if option == "4"
-  max_area = db.execute("SELECT width, MAX(area) FROM media_table")
-  max_area = max_area.flatten
-  largest_width = max_area[0].to_f
-  print_database(db)
-  puts "enter id of media item to scale:"
-  id_to_scale = gets.chomp
-  id_to_scale_query = db.execute("SELECT width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
-  id_to_scale_query = id_to_scale_query.flatten
-  width_to_scale = id_to_scale_query[0]
-  aspect_ratio = id_to_scale_query[1]
-  puts "enter desired width of largest media item:"
-  desired_max_width = gets.chomp.to_f
-  scaled_width = scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
-  scaled_height = scaled_height_calculator(scaled_width, aspect_ratio)
-  p scaled_height
-  p scaled_width
-end
-
-
-
-# p max_area_name = max_area[0]
-# p max_area_value = max_area[1]
-
-# puts "the largest media item in the database is \'#{max_area_name}\'"
-
-# puts "enter desired width for largest item (in pixels):"
-# max_width = gets.chomp.to_i
-
-# paintings_list = $db.execute("SELECT id, name FROM media_table")
-# paintings_list.each do |painting|
-#   p "#{painting[0]}: #{painting[1]}"
-# end
-
-# puts "enter id number of painting to return its proportional values:"
-# id = gets.chomp
-
-# painting_to_calculate = $db.execute("SELECT height, width FROM media_table WHERE id=#{id}")
-# painting_to_calculate = painting_to_calculate.flatten
-# p painting_to_calculate
-
