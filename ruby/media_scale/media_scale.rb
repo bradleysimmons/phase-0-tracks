@@ -49,8 +49,7 @@ def calculate_item_area(height, width)
 end
 
 def calculate_item_aspect_ratio(height, width)
-  aspect = height.to_f / width.to_f
-  aspect = aspect.round(3)
+  (height.to_f / width.to_f).round(3)
 end
 
 def print_database(database)
@@ -64,11 +63,11 @@ def print_database(database)
 end
 
 def scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
-  scaled_width = (width_to_scale / largest_width) * desired_max_width
+  (width_to_scale / largest_width) * desired_max_width
 end
 
-def scaled_height_calculator(scaled_width_calculator_return, aspect_ratio)
-  scaled_height = scaled_width * aspect_ratio
+def scaled_height_calculator(scaled_width, aspect_ratio)
+  scaled_width * aspect_ratio
 end
 
 ########## driver code
@@ -111,8 +110,22 @@ if option == "3"
 end
 
 if option == "4"
-  max_area = db.execute("SELECT name, MAX(area) FROM media_table")
+  max_area = db.execute("SELECT width, MAX(area) FROM media_table")
   max_area = max_area.flatten
+  largest_width = max_area[0].to_f
+  print_database(db)
+  puts "enter id of media item to scale:"
+  id_to_scale = gets.chomp
+  id_to_scale_query = db.execute("SELECT width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
+  id_to_scale_query = id_to_scale_query.flatten
+  width_to_scale = id_to_scale_query[0]
+  aspect_ratio = id_to_scale_query[1]
+  puts "enter desired width of largest media item:"
+  desired_max_width = gets.chomp.to_f
+  scaled_width = scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
+  scaled_height = scaled_height_calculator(scaled_width, aspect_ratio)
+  p scaled_height
+  p scaled_width
 end
 
 
