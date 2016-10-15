@@ -1,4 +1,4 @@
-require_relative "media_scale"
+require_relative "media_scale.rb"
 require "sqlite3"
 
 ########## media scale
@@ -15,7 +15,7 @@ require "sqlite3"
 
 ########## create database and table
 
-$db = SQLite3::Database.new("media.db")
+db = SQLite3::Database.new("media.db")
 
 create_table_command = <<-XX
   CREATE TABLE IF NOT EXISTS media_table(
@@ -28,7 +28,7 @@ create_table_command = <<-XX
   )
 XX
 
-$db.execute(create_table_command)
+db.execute(create_table_command)
 
 ########## driver code
 
@@ -70,7 +70,7 @@ if option == "3"
 end
 
 if option == "4"
-  max_area = $db.execute("SELECT name, MAX(area) FROM media_table")
+  max_area = db.execute("SELECT name, MAX(area) FROM media_table")
   max_area = max_area.flatten
 end
 
