@@ -70,9 +70,21 @@ def scaled_height_calculator(scaled_width, aspect_ratio)
   (scaled_width * aspect_ratio).round(3)
 end
 
+def scale_ratio_calculator(largest_width, min_width, desired_max_width, desired_min_width)
+  media_item_range = largest_width - min_width
+  desired_scaled_range = desired_max_width - desired_min_width
+  desired_scaled_range / media_item_range
+end 
+
+def scaled_width_in_range_calculator(width_to_scale, min_width, scale_ratio, desired_min_width)
+  (((width_to_scale - min_width) * scale_ratio) + desired_min_width).round(3)
+end
+
 ########## driver code
 
 puts "########## media scale"
+puts "## enter information for a collection of media items"
+puts "## return scaled proportions for representation on the web"
 
 until
 
@@ -134,11 +146,35 @@ until
       else
         id_to_scale_query = db.execute("SELECT name, width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
       end
+
+    puts "select a scaling option:"
+    puts "1: by desired max width (true proportions)"
+    puts "2: by desired max and min width (proportions in a range)"
+    scaling_option = gets.chomp
+
     puts "enter desired width of largest media item:"
     desired_max_width = gets.chomp.to_f
 
-      id_to_scale_query.each do |array|
-        name = array[0]
+      if scaling_option == "2"
+        puts "enter desired width of smallest media item:"
+        desired_min_width = gets.chomp.to_f
+        min_width = db.execute("SELECT MIN(width) FROM media_table")
+        min_width = min_width.join("").to_i
+        scale_ratio = scale_ratio_calculator(largest_width, min_width, desired_max_width, desired_min_width)
+
+          id_to_scale_query.each do |array|
+            name = array[0]
+            width_to_scale = array[1]
+            aspect_ratio = array[2]
+            scaled_width = scaled_width_in_range_calculator(width_to_scale, min_width, scale_ratio, desired_min_width)
+            scaled_height = scaled_height_calculator(scaled_width, aspect_ratio)
+            puts "\n"
+            puts "media name: #{name}"
+            puts "scaled height: #{scaled_height}; scaled width: #{scaled_width}"
+          end
+      else
+        id_to_scale_query.each do |array|
+          name = array[0]
         width_to_scale = array[1]
         aspect_ratio = array[2]
         scaled_width = scaled_width_calculator(desired_max_width, largest_width, width_to_scale)
@@ -146,9 +182,16 @@ until
         puts "\n"
         puts "media name: #{name}"
         puts "scaled height: #{scaled_height}; scaled width: #{scaled_width}"
+        end
       end
+      
+    
 
   end
+
+  
+  
+
 
   if option == "5"
     break
