@@ -184,14 +184,7 @@ until
         puts "scaled height: #{scaled_height}; scaled width: #{scaled_width}"
         end
       end
-      
-    
-
   end
-
-  
-  
-
 
   if option == "5"
     break
