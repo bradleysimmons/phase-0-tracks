@@ -78,10 +78,11 @@ until
 
   puts "\n"
   puts "select option:"
-  puts "1: input media to database"
-  puts "2: view database"
-  puts "3: calculate scaled dimensions"
-  puts "4: exit"
+  puts "1: input media item to database"
+  puts "2: delete media item from database"
+  puts "3: view database"
+  puts "4: calculate scaled dimensions"
+  puts "5: exit"
   option = gets.chomp
 
   if option == "1"
@@ -109,9 +110,19 @@ until
 
   if option == "2"
     print_database(db)
+    puts "enter id of media item to delete (or \"q\" to quit):"
+    id_to_delete = gets.chomp
+    if id_to_delete == "q"
+    else 
+      db.execute("DELETE FROM media_table WHERE id=#{id_to_delete}")
+    end
   end
 
   if option == "3"
+    print_database(db)
+  end
+
+  if option == "4"
     max_area = db.execute("SELECT width, MAX(area) FROM media_table")
     max_area = max_area.flatten
     largest_width = max_area[0].to_f
@@ -139,7 +150,7 @@ until
 
   end
 
-  if option == "4"
+  if option == "5"
     break
   end
 
