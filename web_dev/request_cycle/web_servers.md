@@ -7,4 +7,4 @@
     - a vps is useful because it can be specialized: changes only affect the target
 
 * optional bonus question: why is it considered a bad idea to run programs as the root user on a Linux system?
-    - because it has no security features and allows access to the entire machine
+    - because it has no security features and allows access to the entire machine 
