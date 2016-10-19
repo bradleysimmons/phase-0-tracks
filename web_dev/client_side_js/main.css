@@ -1,0 +1,17 @@
+/*body {
+  background-color: black;
+}*/
+
+#left {
+  float: left;
+  width: 100px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  padding: 0 0 0 5px;
+}
