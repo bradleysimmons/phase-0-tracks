@@ -1,0 +1,18 @@
+/*body {
+  background-color: black;
+}*/
+
+#left {
+  float: left;
+  width: 100px;
+}
+
+#nav_menu {
+  list-style: none;
+  padding: 0;
+  display: none;
+}
+
+a {
+  padding: 0 0 0 5px;
+}
