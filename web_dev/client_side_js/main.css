@@ -7,9 +7,10 @@
   width: 100px;
 }
 
-ul {
+#nav_menu {
   list-style: none;
   padding: 0;
+  display: none;
 }
 
 a {
