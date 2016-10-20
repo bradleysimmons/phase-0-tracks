@@ -39,13 +39,26 @@
         });`
 
 * example code
-    - ```$(document).ready(function(){
+    ```$(document).ready(function(){
            $("div").mouseenter(function() {
              $("div").fadeTo("fast", 1);
            }); $("div").mouseleave(function() {
                  $("div").fadeTo("fast", 0.5);
                });
-         });```
+         });
+    ```
 
+    ```$(document).ready(function() {
+        var $target = $("ol li:nth-child(4)");
+            $target.fadeOut('fast');
+        });
+    ```
+
+```$(document).ready(function() {
+    $("button").click(function() {
+     $(".vanish").fadeOut("slow");
+    });
+   });
+```
 
 
