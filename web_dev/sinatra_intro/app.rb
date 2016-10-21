@@ -96,3 +96,5 @@ get '/search/:name' do
   end
   names_joined
 end
+
+http://localhost:9393/search/Dandre
