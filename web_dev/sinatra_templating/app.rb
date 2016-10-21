@@ -17,6 +17,10 @@ get '/students/new' do
   erb :new_student
 end
 
+get '/students/delete' do
+  erb :delete_student
+end
+
 # create new students via
 # a form
 post '/students' do
