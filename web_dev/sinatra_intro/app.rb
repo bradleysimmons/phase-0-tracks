@@ -79,3 +79,20 @@ get '/:number_one/plus/:number_two' do
   sum = ("#{params[:number_one]}").to_i + ("#{params[:number_two]}").to_i
   sum.to_s
 end
+
+#Optional bonus: Make a route that allows 
+#the user to search the database in some way 
+#-- maybe for students who have a certain 
+#first name, or some other attribute. If you 
+#like, you can simply modify the home page to 
+#take a query parameter, and filter the students 
+#displayed if a query parameter is present.
+
+get '/search/:name' do
+  names = db.execute("SELECT name FROM students")
+  names_joined = []
+  names.each do |students|
+    names_joined << students['name'].split.to_s
+  end
+  names_joined
+end
