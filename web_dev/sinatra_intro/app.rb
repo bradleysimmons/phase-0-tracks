@@ -88,13 +88,14 @@ end
 #take a query parameter, and filter the students 
 #displayed if a query parameter is present.
 
-get '/search/:name' do
-  names = db.execute("SELECT name FROM students")
-  names_joined = []
-  names.each do |students|
-    names_joined << students['name'].split.to_s
+get '/search/:campus' do
+  names = db.execute("SELECT * FROM students WHERE campus=?", [params[:campus]])
+  results = ""
+  names.each do |student|
+    results << "ID: #{student['id']}<br>"
+    results << "Name: #{student['name']}<br>"
+    results << "Age: #{student['age']}<br>"
+    results << "Campus: #{student['campus']}<br><br>"
   end
-  names_joined
+  results
 end
-
-http://localhost:9393/search/Dandre
