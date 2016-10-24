@@ -37,35 +37,35 @@ until
         end
       area = calculate_item_area(height, width)
       aspect_ratio = calculate_item_aspect_ratio(height, width)
-      create_media_item(db, name, height, width, area, aspect_ratio)
+      create_media_item(DB, name, height, width, area, aspect_ratio)
     end
   end
 
   if option == "2"
-    print_database(db)
+    print_database(DB)
     puts "enter id of media item to delete (or \"q\" to quit):"
     id_to_delete = gets.chomp
     if id_to_delete == "q"
     else 
-      db.execute("DELETE FROM media_table WHERE id=#{id_to_delete}")
+      DB.execute("DELETE FROM media_table WHERE id=#{id_to_delete}")
     end
   end
 
   if option == "3"
-    print_database(db)
+    print_database(DB)
   end
 
   if option == "4"
-    max_area = db.execute("SELECT width, MAX(area) FROM media_table")
+    max_area = DB.execute("SELECT width, MAX(area) FROM media_table")
     max_area = max_area.flatten
     largest_width = max_area[0].to_f
-    print_database(db)
+    print_database(DB)
     puts "enter id of media item to scale (or 0 to scale all):"
     id_to_scale = gets.chomp
       if id_to_scale == "0"
-        id_to_scale_query = db.execute("SELECT name, width, aspect_ratio FROM media_table")
+        id_to_scale_query = DB.execute("SELECT name, width, aspect_ratio FROM media_table")
       else
-        id_to_scale_query = db.execute("SELECT name, width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
+        id_to_scale_query = DB.execute("SELECT name, width, aspect_ratio FROM media_table WHERE id=#{id_to_scale}")
       end
 
     puts "select a scaling option:"
@@ -79,7 +79,7 @@ until
       if scaling_option == "2"
         puts "enter desired width of smallest media item:"
         desired_min_width = gets.chomp.to_f
-        min_width = db.execute("SELECT MIN(width) FROM media_table")
+        min_width = DB.execute("SELECT MIN(width) FROM media_table")
         min_width = min_width.join("").to_i
         scale_ratio = scale_ratio_calculator(largest_width, min_width, desired_max_width, desired_min_width)
 
